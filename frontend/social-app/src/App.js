@@ -3,6 +3,8 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import AuthenticatedRoute from "./containers/AuthenticatedRoute";
 import LoginScreen from "./screens/LoginScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import 'antd/dist/antd.css';
+
 
 export default class App extends Component {
     render() {

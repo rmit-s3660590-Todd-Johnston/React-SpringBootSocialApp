@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import { Typography } from 'antd'
 
 
-const {Text, Header} = Typography;
+const {Text, Title} = Typography;
 
 export default class LoginScreen extends Component {
     render() {
         return <div>
-            <Header>Login</Header>
+            <Title>Login</Title>
         </div>
     }
 }
