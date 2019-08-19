@@ -8,10 +8,13 @@ export default class App extends Component {
     render() {
         return (
             <Router>
+                {/* ADD HEADER STUFF HERE */}
                 <Switch>
                     <Route path="/" exact component={LoginScreen}/>
+                    <Route path="/login" component={LoginScreen}/>
                     <AuthenticatedRoute path="/profile" component={ProfileScreen}/>
                 </Switch>
+                {/* ADD FOOTER STUFF HERE */}
             </Router>
         )
     }
