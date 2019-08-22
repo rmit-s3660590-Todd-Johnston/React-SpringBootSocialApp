@@ -5,6 +5,7 @@ import LoginScreen from "./screens/LoginScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import 'antd/dist/antd.css';
 import {Layout, Menu, Typography} from "antd";
+import RegistrationScreen from "./screens/RegistrationScreen";
 
 
 const {Title} = Typography;
@@ -16,7 +17,8 @@ export default class App extends Component {
         super(props);
 
         this.state = {
-            current: 'Login'
+            current: 'Login',
+            authenticated: true
         }
     }
 
@@ -44,6 +46,7 @@ export default class App extends Component {
                         <Switch>
                             <Route path="/" exact component={LoginScreen}/>
                             <Route path="/login" component={LoginScreen}/>
+                            <Route path="/registration" component={RegistrationScreen}/>
                             <AuthenticatedRoute path="/profile" component={ProfileScreen}/>
                         </Switch>
                     </Content>
