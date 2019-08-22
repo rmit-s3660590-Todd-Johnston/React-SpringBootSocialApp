@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Avatar } from "antd";
+import {Descriptions} from "antd";
+import {Divider} from "antd";
 
 
 export default class ProfileScreen extends Component {
@@ -13,8 +15,15 @@ export default class ProfileScreen extends Component {
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh'}}>
                 <h1>Mark</h1>
             </div>
+            <Divider>About Me</Divider>
+            <Descriptions>
+                <Descriptions.Item label="UserName">Mark</Descriptions.Item>
+                <Descriptions.Item label="Telephone">9876543234</Descriptions.Item>
+                <Descriptions.Item label="City">Cali</Descriptions.Item>
+                <Descriptions.Item label="Address"> Planet Earth
+                </Descriptions.Item>
+            </Descriptions>
             <div>
-
             </div>
         </div>
 
