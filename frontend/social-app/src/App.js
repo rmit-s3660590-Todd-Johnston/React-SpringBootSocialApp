@@ -5,8 +5,6 @@ import LoginScreen from "./screens/LoginScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import 'antd/dist/antd.css';
 import {Layout, Menu, Typography} from "antd";
-
-
 const {Title} = Typography;
 const {Header, Content, Footer} = Layout;
 

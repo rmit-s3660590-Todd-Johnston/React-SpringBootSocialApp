@@ -1,45 +1,66 @@
 import React, {Component} from 'react';
-import {Avatar,Descriptions, Divider, Tooltip,Button, List, Card} from "antd";
+import axios from 'axios'
+import {Avatar, Descriptions, Divider, Tooltip, Button, List, Card, Badge, Icon} from "antd";
 
 const data = [
     {
-        title: 'Title 1',
+        title: 'Skill 1',
     },
     {
-        title: 'Title 2',
+        title: 'Skill 2',
     },
     {
-        title: 'Title 3',
+        title: 'Skill 3',
     },
     {
-        title: 'Title 4',
+        title: 'Skill 4',
     },
     {
-        title: 'Title 5',
+        title: 'Skill 5',
     },
     {
-        title: 'Title 6',
+        title: 'Skill 6',
     },
 ];
 
 
 export default class ProfileScreen extends Component {
-    state = {
+   constructor(props){
+       super(props);
+       this.state = {
+           name: 'Name Error',
+           profilePic: "https://short-biography.com/wp-content/uploads/mark-zuckerberg/Mark-Zuckerberg-300x300.jpg"
+       };
+   }
 
-    }
+   componentDidMount() {
+    //TODO get(name)
+       axios.get(`http://localhost:8080/hello-world/path-variable/`)
+           .then(res => {
+              const name = res.data;
+              this.setState(name)
+           })
+       }
 
-
-    render() {
+    render(){
         return <div>
             <h1>Profile</h1>
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh'}}>
-                <Tooltip placement="right" title={"Hey! Don't touch my face human"}>
-                <Avatar src="https://short-biography.com/wp-content/uploads/mark-zuckerberg/Mark-Zuckerberg-300x300.jpg"
+                    <a href={"#"}>
+                    <Badge count={<Icon style={{marginBottom : '10px'}} type={"edit"}/>}>
+                        <Tooltip placement="right" title={"Hey! Don't touch my face human"}>
+                        <Avatar src= {this.state.profilePic}
                         size={128} icon="user"/>
-            </Tooltip>
+                        </Tooltip>
+                    </Badge>
+                    </a>
+
+
             </div>
+
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh'}}>
-                <h1>Mark</h1>
+                <h1>{this.state.name}</h1>
+
             </div>
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <Button style={{marginRight: '60px'}} size={'large'} style={{"background-color" : "blue"}}>
