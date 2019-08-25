@@ -80,6 +80,15 @@ class RegistrationScreen extends React.Component {
                                 required: true,
                                 message: 'Please input your E-mail!',
                             },
+                            {
+                                validator: (rule, value, callback) => {
+                                    if (/^[sS]\d{7}@student\.rmit\.edu\.au$/.test(value) === false) {
+                                        callback("It is not in the form of a student email!")
+                                    } else {
+                                        callback()
+                                    }
+                                },
+                            }
                         ],
                     })(<Input/>)}
                 </Form.Item>
