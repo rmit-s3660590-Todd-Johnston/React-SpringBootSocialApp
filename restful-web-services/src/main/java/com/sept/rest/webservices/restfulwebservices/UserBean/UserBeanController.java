@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins="http://localhost:4200")
 
 public class UserBeanController {
-    @GetMapping(path = "/user")
 
-    public UserBean helloWorld() {
-        return new UserBean("Test");
+    @GetMapping(path = "/users")
+    public UserBean getAllUsers(){
+        return new UserBean();
     }
+
 }
