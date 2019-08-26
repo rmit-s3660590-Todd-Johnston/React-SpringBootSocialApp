@@ -22,9 +22,10 @@ public class TodoJpaResource {
     @Autowired
     private OtherJpaRepository otherJpaRepository;
 
+    // As you can see, this is where it was changed. Check the react todo-app to see the difference
     @GetMapping("/jpa/users/{username}/todos")
-    public List<Todo> getAllTodos(@PathVariable String username) {
-        return todoJpaRepository.findByUsername(username);
+    public List<Other> getAllTodos(@PathVariable String username) {
+        return otherJpaRepository.findByUsername(username);
         //return todoService.findAll();
     }
 
