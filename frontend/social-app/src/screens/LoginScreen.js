@@ -24,7 +24,6 @@ class LoginScreen extends Component {
                     .executeJwtAuthenticationService(values.username, values.password)
                     .then((response) => {
                         AuthenticationService.registerSuccessfulLoginForJwt(values.username, response.data.token);
-                        console.log("HOORAY!");
                         this.props.history.push(`/profile`)
                     })
                     .catch((err) => {
@@ -65,7 +64,9 @@ class LoginScreen extends Component {
                         )}
                     </Form.Item>
                     <Form.Item>
-                        <Button type="primary" htmlType="submit" disabled={hasErrors(getFieldsError())}>
+                        <Button
+                            data-testid="login-button"
+                            type="primary" htmlType="submit" disabled={hasErrors(getFieldsError())}>
                             Log in
                         </Button>
                     </Form.Item>

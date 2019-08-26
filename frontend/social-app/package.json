@@ -11,11 +11,12 @@
   },
   "dependencies": {
     "antd": "^3.22.0",
+    "axios": "^0.19.0",
+    "axios-mock-adapter": "^1.17.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.8",
-    "axios": "^0.19.0"
+    "react-scripts": "2.1.8"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -25,12 +26,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-<<<<<<< HEAD
-  ],
-  "devDependencies": {
-    "axios": "^0.19.0"
-  }
-=======
   ]
->>>>>>> develop
 }
