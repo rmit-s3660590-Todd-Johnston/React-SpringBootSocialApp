@@ -50,6 +50,7 @@ public class UserBeanController {
         user.setUser_name(userDetails.getUser_name());
         user.setName(userDetails.getName());
         user.setLast_name(userDetails.getLast_name());
+        user.setPassword(userDetails.getPassword());
 
         UserBean updatedUser = userBeanRepository.save(user);
 
@@ -66,7 +67,4 @@ public class UserBeanController {
 
         return ResponseEntity.ok().build();
     }
-
-
-
 }

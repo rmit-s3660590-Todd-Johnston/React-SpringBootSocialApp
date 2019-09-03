@@ -15,18 +15,21 @@ public class UserBean {
     private String name;
     @NotBlank
     private String last_name;
+    @NotBlank
+    private String password;
 
 
     public UserBean() {
         super();
     }
 
-    public UserBean(Long id, String user_name, String name, String last_name){
+    public UserBean(Long id, String user_name, String name, String last_name, String password){
         super();
         this.id = id;
         this.user_name = user_name;
         this.name = name;
         this.last_name = last_name;
+        this.password = password;
     }
 
     public Long getId() {
@@ -59,5 +62,13 @@ public class UserBean {
 
     public void setLast_name(String last_name) {
         this.last_name = last_name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
