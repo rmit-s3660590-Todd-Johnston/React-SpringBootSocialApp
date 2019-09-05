@@ -117,4 +117,14 @@ public class UserBean {
         }
         return "Unable to find subject";
     }
+
+    public String[] getSubjects()
+    {
+        return this.subjects;
+    }
+
+    public void setSubjects(String[] subjects)
+    {
+        this.subjects = subjects;
+    }
 }
