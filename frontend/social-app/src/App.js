@@ -6,6 +6,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import 'antd/dist/antd.css';
 import {Layout, Menu, Typography} from "antd";
 import RegistrationScreen from "./screens/RegistrationScreen";
+import ChatScreen from "./screens/ChatScreen";
 
 
 const {Title} = Typography;
@@ -25,7 +26,7 @@ export default class App extends Component {
     render() {
         return (
             <Router>
-                <Layout style={{height: window.innerHeight}}>
+                <Layout style={{minHeight: "100vh"}}>
                     <Header>
                         <Menu
                             onClick={e => this.setState({current: e.key})}
@@ -40,17 +41,19 @@ export default class App extends Component {
                             <Menu.Item>
                                 <Link to={'/profile'}>Profile</Link>
                             </Menu.Item>
+                            <Menu.Item>
+                                <Link to={'/chat'}>Chat</Link>
+                            </Menu.Item>
                         </Menu>
                     </Header>
-                    <Content style={{padding: '0 50px', marginTop: 64, flex: 1}}>
-                        <Switch>
-                            <Route path="/" exact component={LoginScreen}/>
-                            <Route path="/login" component={LoginScreen}/>
-                            <Route path="/registration" component={RegistrationScreen}/>
-                            <AuthenticatedRoute path="/profile" component={ProfileScreen}/>
-                        </Switch>
-                    </Content>
-                    <Footer style={{ textAlign: 'center' }}>Created by Todd, Jack, Sherry, and Tom | Doughnuts Taste Good™ </Footer>
+                    <Switch>
+                        <Route path="/" exact component={LoginScreen}/>
+                        <Route path="/login" component={LoginScreen}/>
+                        <Route path="/registration" component={RegistrationScreen}/>
+                        <AuthenticatedRoute path="/profile" component={ProfileScreen}/>
+                        <AuthenticatedRoute path="/chat" component={ChatScreen}/>
+                    </Switch>
+                    <Footer style={{textAlign: 'center'}}>Created by Todd, Jack, Sherry, and Tom | Doughnuts Taste Good™ </Footer>
                 </Layout>
             </Router>
         )

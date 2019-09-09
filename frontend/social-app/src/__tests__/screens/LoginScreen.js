@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { act } from "react-dom/test-utils";
+import {act} from "react-dom/test-utils";
 import LoginScreen from "../../screens/LoginScreen";
 import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
