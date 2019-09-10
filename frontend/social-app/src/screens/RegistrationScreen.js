@@ -68,7 +68,7 @@ class RegistrationScreen extends React.Component {
         };
 
         return (
-            <Layout.Content>
+            <Layout.Content style={{padding: 13}}>
                 <Form {...formItemLayout} onSubmit={this.handleSubmit}>
                     <Form.Item label="E-mail">
                         {getFieldDecorator('email', {

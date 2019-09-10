@@ -40,7 +40,7 @@ class LoginScreen extends Component {
         const usernameError = isFieldTouched('username') && getFieldError('username');
         const passwordError = isFieldTouched('password') && getFieldError('password');
         return (
-            <Layout.Content>
+            <Layout.Content style={{padding: 13}}>
                 <Form layout="vertical" onSubmit={this.handleSubmit}>
                     <Form.Item validateStatus={usernameError ? 'error' : ''} help={usernameError || ''}>
                         {getFieldDecorator('username', {
