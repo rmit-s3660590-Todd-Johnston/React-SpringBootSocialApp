@@ -5,28 +5,36 @@ import {Typography} from "antd";
 interface MessageProps {
     owned: boolean;
     message: string;
+    name?: string
 }
 
 const Message: React.FC<MessageProps> = (props: MessageProps) => {
+    const {owned, message, name} = props;
+    console.assert(name != undefined || owned);
+
     return <div
         style={{
             marginTop: 7,
             display: "flow-root"
         }}
     >
+        {
+            !owned && <Typography.Text style={{float: owned ? 'right' : 'left'}}>{name}</Typography.Text>
+        }
+        <br/>
         <div
             style={{
                 padding: 7,
                 borderRadius: 10000,
-                backgroundColor: props.owned ? "#5588dd" : "#cccccc",
+                backgroundColor: owned ? "#5588dd" : "#cccccc",
                 display: 'inline',
-                float: props.owned ? 'right' : 'left'
+                float: owned ? 'right' : 'left'
             }}
         >
             <Typography.Text
-                style={{color: props.owned ? "#FFFFFF" : "#000000",}}
+                style={{color: owned ? "#FFFFFF" : "#000000",}}
             >
-                {props.message}
+                {message}
             </Typography.Text>
 
         </div>

@@ -19,47 +19,13 @@ const ChatWindow: React.FC<ChatWindowProps> = (props: ChatWindowProps) => {
             <div style={{overflowY: "scroll", maxHeight: '-webkit-fill-available', flexGrow: 1, padding: 13}}>
                 <Message
                     owned={false}
+                    name={"Jack"}
                     message={"Hello from the other side!"}
-                />
-                <Message
-                    owned={true}
-                    message={"Hello from me!"}
-                />
-                <Message
-                    owned={true}
-                    message={"Hello from me!"}
                 />
                 <Message
                     owned={false}
+                    name={"Jack"}
                     message={"Hello from the other side!"}
-                />
-                <Message
-                    owned={true}
-                    message={"Hello from me!"}
-                />
-                <Message
-                    owned={true}
-                    message={"Hello from me!"}
-                />
-                <Message
-                    owned={false}
-                    message={"Hello from the other side!"}
-                />
-                <Message
-                    owned={true}
-                    message={"Hello from me!"}
-                />
-                <Message
-                    owned={true}
-                    message={"Hello from me!"}
-                />
-                <Message
-                    owned={false}
-                    message={"Hello from the other side!"}
-                />
-                <Message
-                    owned={true}
-                    message={"Hello from me!"}
                 />
                 <Message
                     owned={true}
