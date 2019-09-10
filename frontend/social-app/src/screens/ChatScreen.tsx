@@ -18,7 +18,7 @@ const ChatScreen: React.FC<ChatScreenProps> = (props: ChatScreenProps) => {
                     setOpenChat(key)
                 }}
                 defaultSelectedKeys={[openChat]}
-                style={{height: '100%', borderRight: 0}}
+                style={{height: '100%', borderRight: 0, padding: 13}}
             >
                 {["Tom", "Jack", "Todd", "Sherry"].map((item, key) => <Menu.Item
                     key={key}

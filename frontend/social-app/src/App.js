@@ -7,6 +7,7 @@ import 'antd/dist/antd.css';
 import {Layout, Menu, Typography} from "antd";
 import RegistrationScreen from "./screens/RegistrationScreen";
 import ChatScreen from "./screens/ChatScreen";
+import GroupStudyScreen from "./screens/GroupStudyScreen";
 
 
 const {Title} = Typography;
@@ -52,6 +53,7 @@ export default class App extends Component {
                         <Route path="/registration" component={RegistrationScreen}/>
                         <AuthenticatedRoute path="/profile" component={ProfileScreen}/>
                         <AuthenticatedRoute path="/chat" component={ChatScreen}/>
+                        <AuthenticatedRoute path="/study" component={GroupStudyScreen}/>
                     </Switch>
                     <Footer style={{textAlign: 'center'}}>Created by Todd, Jack, Sherry, and Tom | Doughnuts Taste Good™ </Footer>
                 </Layout>

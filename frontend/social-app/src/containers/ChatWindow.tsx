@@ -11,7 +11,7 @@ const ChatWindow: React.FC<ChatWindowProps> = (props: ChatWindowProps) => {
 
     return <Layout.Content style={{
             backgroundColor: "#FFFFFF",
-            margin: 26,
+            margin: 13,
             padding: 13,
             display: 'flex',
             flexDirection: "column"
