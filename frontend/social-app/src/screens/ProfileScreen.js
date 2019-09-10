@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
+import Wall from "../containers/Wall";
 
 
 export default class ProfileScreen extends Component {
     render() {
-        return <div>
-            <h1>Profile</h1>
-        </div>
+        return <Wall></Wall>
     }
 }
