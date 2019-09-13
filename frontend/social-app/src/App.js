@@ -6,6 +6,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import 'antd/dist/antd.css';
 import {Layout, Menu, Typography} from "antd";
 import RegistrationScreen from "./screens/RegistrationScreen";
+import Search from "./components/Search";
 
 
 const {Title} = Typography;
