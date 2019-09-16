@@ -23,48 +23,46 @@ export default class ProfileScreen extends Component {
 
     }
 
-    render(){
+    render() {
         return <div>
-        <h1>Profile</h1>
-        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh'}}>
-    <a href={"#"}>
-            <Badge count={<Icon style={{marginBottom : '10px', color:'gray'}} type={"edit"}/>}>
-        <Tooltip placement="right" title={"Hey! Don't touch my face human"}>
-            <Avatar src= {this.state.profilePic}
-        size={128} icon="user"/>
-            </Tooltip>
-            </Badge>
-            </a>
+            <h1>Profile</h1>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh'}}>
+                <a href={"#"}>
+                    <Badge count={<Icon style={{marginBottom: '10px', color: 'gray'}} type={"edit"}/>}>
+                        <Tooltip placement="right" title={"Hey! Don't touch my face human"}>
+                            <Avatar src={this.state.profilePic}
+                                    size={128} icon="user"/>
+                        </Tooltip>
+                    </Badge>
+                </a>
             </div>
 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh'}}>
-    <h1>{this.state.name}</h1>
-        </div>
+                <h1>{this.state.name}</h1>
+            </div>
 
-        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-    <Button style={{marginRight: '60px', backgroundColor : "aqua"}} size={'large'}>
-            Message Me
-        </Button>
-        <Button style={{marginLeft: '60px'}} size={'large'} >Add Friend?</Button>
-        </div>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <Button style={{marginRight: '60px', backgroundColor: "aqua"}} size={'large'}>
+                    Message Me
+                </Button>
+                <Button style={{marginLeft: '60px'}} size={'large'}>Add Friend?</Button>
+            </div>
 
-        <Divider style={{color:'black', font:'bold', marginTop:'30px'}}>About Me</Divider>
-        <Descriptions>
-        <Descriptions.Item label="UserName">Mark</Descriptions.Item>
-            <Descriptions.Item label="Telephone">9876543234</Descriptions.Item>
-            <Descriptions.Item label="City">Cali</Descriptions.Item>
-            <Descriptions.Item label="Address"> Planet Earth
-        </Descriptions.Item>
-        </Descriptions>
+            <Divider style={{color: 'black', font: 'bold', marginTop: '30px'}}>About Me</Divider>
+            <Descriptions>
+                <Descriptions.Item label="UserName">Mark</Descriptions.Item>
+                <Descriptions.Item label="Telephone">9876543234</Descriptions.Item>
+                <Descriptions.Item label="City">Cali</Descriptions.Item>
+                <Descriptions.Item label="Address"> Planet Earth
+                </Descriptions.Item>
+            </Descriptions>
 
-        <Divider style={{color:'black', font:'bold', marginTop:'30px'}}>My Skills</Divider>
-        <Card.Grid style={gridStyle}>Business Man</Card.Grid>
-        <Card.Grid style={gridStyle}>Decision Maker</Card.Grid>
-        <Card.Grid style={gridStyle}>Deal Closer</Card.Grid>
-        <Card.Grid style={gridStyle}>Offer Maker</Card.Grid>
-        <Card.Grid style={gridStyle}>Machine Learning</Card.Grid>
+            <Divider style={{color: 'black', font: 'bold', marginTop: '30px'}}>My Skills</Divider>
+            <Card.Grid style={gridStyle}>Business Man</Card.Grid>
+            <Card.Grid style={gridStyle}>Decision Maker</Card.Grid>
+            <Card.Grid style={gridStyle}>Deal Closer</Card.Grid>
+            <Card.Grid style={gridStyle}>Offer Maker</Card.Grid>
+            <Card.Grid style={gridStyle}>Machine Learning</Card.Grid>
         </div>
-    render() {
-        return <Wall></Wall>
     }
-    }
+}
