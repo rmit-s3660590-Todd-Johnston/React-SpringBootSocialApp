@@ -13,8 +13,8 @@ import TodoComponent from './TodoComponent.jsx'
 class TodoApp extends Component {
     render() {
         return (
+            <Router>
             <div className="TodoApp">
-                <Router>
                         <HeaderComponent/>
                         <Switch>
                             <Route path="/" exact component={LoginComponent}/>
@@ -27,10 +27,10 @@ class TodoApp extends Component {
                             <Route component={ErrorComponent}/>
                         </Switch>
                         <FooterComponent/>
-                </Router>
                 {/*<LoginComponent/>
                 <WelcomeComponent/>*/}
             </div>
+            </Router>
         )
     }
 }
