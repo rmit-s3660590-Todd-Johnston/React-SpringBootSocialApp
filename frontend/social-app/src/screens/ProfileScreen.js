@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import {Avatar, Descriptions, Divider, Tooltip, Button, List, Card, Badge, Icon} from "antd";
+import Wall from "../containers/Wall";
 
 const gridStyle = {
     width: '25%',
@@ -63,5 +64,7 @@ export default class ProfileScreen extends Component {
         <Card.Grid style={gridStyle}>Offer Maker</Card.Grid>
         <Card.Grid style={gridStyle}>Machine Learning</Card.Grid>
         </div>
+    render() {
+        return <Wall></Wall>
     }
     }
