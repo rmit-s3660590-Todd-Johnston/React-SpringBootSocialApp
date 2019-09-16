@@ -17,13 +17,9 @@ export default class ProfileScreen extends Component {
         };
     }
 
+
     componentDidMount() {
-        //TODO get(name)
-        axios.get(`http://localhost:8080/hello-world/path-variable/`)
-            .then(res => {
-                const name = res.data;
-                this.setState(name)
-            })
+
     }
 
     render(){

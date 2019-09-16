@@ -8,7 +8,6 @@ import {Layout, Menu, Typography} from "antd";
 import RegistrationScreen from "./screens/RegistrationScreen";
 import Search from "./components/Search";
 
-
 const {Title} = Typography;
 const {Header, Content, Footer} = Layout;
 
@@ -22,6 +21,7 @@ export default class App extends Component {
             authenticated: true
         }
     }
+    //TODO - search bar in header
 
     render() {
         return (

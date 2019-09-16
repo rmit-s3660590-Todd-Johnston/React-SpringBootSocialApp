@@ -7,7 +7,8 @@ export default class Search extends Component {
         super(props);
 
         this.state = {
-            value: '',
+            users: [],
+            value: undefined,
             isFocus: false,
             isClearing: false,
         };
@@ -30,15 +31,15 @@ export default class Search extends Component {
         }
     }
 
-    handleInputChange(e) {
-        const value = e.target.value;
-        this.setState({ value }, () => {
-            const onChange = this.props.onChange;
-            if (onChange) {
-                onChange(value);
+    handleInputChange = () => {
+        this.setState({
+            value: this.search.value
+        }, () => {
+            if (this.state.value.length > 1) {
+                    this.getData();
             }
-        });
-    }
+        })
+    };
 
     handleMouseDown() {
         this.setState({ isClearing: true });
@@ -67,13 +68,16 @@ export default class Search extends Component {
         }
     }
 
-    componentDidMount() {
-        this.setState({isLoading: true});
-
-        fetch('api/')
+    getData = () => {
+        axios.get(`http://localhost:4200/users`)
             .then(response => response.json())
-            .then(data => this.setState({groups: data, isLoading: false}));
-    }
+            .then(responseData => {
+                console.log(responseData);
+                this.setState({
+                    users: responseData
+                })
+            })
+    };
 
 
     render(){
