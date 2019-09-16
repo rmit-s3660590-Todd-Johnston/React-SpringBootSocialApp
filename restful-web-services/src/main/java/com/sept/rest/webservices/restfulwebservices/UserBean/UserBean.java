@@ -20,7 +20,7 @@ public class UserBean {
     @NotBlank
     private boolean isMentor;
     @NotBlank
-    private String profilePic;
+    private ProfilePicture profilePicture;
     @NotBlank
     private String[] subjects;
 
@@ -29,7 +29,7 @@ public class UserBean {
         super();
     }
 
-    public UserBean(Long id, String user_name, String name, String last_name, String password, boolean isMentor, String profilePic){
+    public UserBean(Long id, String user_name, String name, String last_name, String password, boolean isMentor, ProfilePicture profilePicture){
         super();
         this.id = id;
         this.user_name = user_name;
@@ -37,7 +37,7 @@ public class UserBean {
         this.last_name = last_name;
         this.password = password;
         this.isMentor = isMentor;
-        this.profilePic = profilePic;
+        this.profilePicture = profilePicture;
         this.subjects = new String[4];//uninitialised list of classes, to be done via addclass method after user creation
         //max classes/subjects
 
