@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = UserBeanController.class)
+@SpringBootTest(classes=UserBean.class)
 public class UserBeanControllerTest {
 
     @Autowired
