@@ -10,6 +10,5 @@ import java.util.List;
 //Annotation used to Indicate the DAO (Data Access Object) component in the persistence layer.
 @Repository
 public interface UserBeanRepository extends JpaRepository<UserBean, Long> {
-    List<UserBean> findAllBy(Long id);
 
 }
