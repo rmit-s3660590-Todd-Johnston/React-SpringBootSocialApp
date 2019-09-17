@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios'
-import {Avatar, Descriptions, Divider, Tooltip, Button, List, Card, Badge, Icon} from "antd";
-import Wall from "../containers/Wall";
+import {Avatar, Descriptions, Divider, Tooltip, Button, List, Card, Badge, Icon, Typography} from "antd";
+import {Layout} from "antd";
 
 const gridStyle = {
     width: '25%',
@@ -24,8 +24,8 @@ export default class ProfileScreen extends Component {
     }
 
     render() {
-        return <div>
-            <h1>Profile</h1>
+        return <Layout.Content style={{backgroundColor: "#FFFFFF", margin: 13, padding: 13}}>
+            <Typography.Title>Profile</Typography.Title>
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh'}}>
                 <a href={"#"}>
                     <Badge count={<Icon style={{marginBottom: '10px', color: 'gray'}} type={"edit"}/>}>
@@ -42,7 +42,7 @@ export default class ProfileScreen extends Component {
             </div>
 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <Button style={{marginRight: '60px', backgroundColor: "aqua"}} size={'large'}>
+                <Button style={{marginRight: 60}} type='primary' size={'large'}>
                     Message Me
                 </Button>
                 <Button style={{marginLeft: '60px'}} size={'large'}>Add Friend?</Button>
@@ -50,7 +50,7 @@ export default class ProfileScreen extends Component {
 
             <Divider style={{color: 'black', font: 'bold', marginTop: '30px'}}>About Me</Divider>
             <Descriptions>
-                <Descriptions.Item label="UserName">Mark</Descriptions.Item>
+                <Descriptions.Item label="Name">Mark</Descriptions.Item>
                 <Descriptions.Item label="Telephone">9876543234</Descriptions.Item>
                 <Descriptions.Item label="City">Cali</Descriptions.Item>
                 <Descriptions.Item label="Address"> Planet Earth
@@ -63,6 +63,6 @@ export default class ProfileScreen extends Component {
             <Card.Grid style={gridStyle}>Deal Closer</Card.Grid>
             <Card.Grid style={gridStyle}>Offer Maker</Card.Grid>
             <Card.Grid style={gridStyle}>Machine Learning</Card.Grid>
-        </div>
+        </Layout.Content>
     }
 }
