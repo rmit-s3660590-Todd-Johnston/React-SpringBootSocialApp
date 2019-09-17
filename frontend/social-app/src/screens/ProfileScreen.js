@@ -42,10 +42,17 @@ export default class ProfileScreen extends Component {
             </div>
 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <Button style={{marginRight: 60}} type='primary' size={'large'}>
+                <Button style={{marginRight: 60}} size={'large'}
+                    onClick={() => {this.props.history.push('/wall')}}
+                >
+                    Go To Wall
+                </Button>
+                <Button style={{marginRight: 60}} type='primary' size={'large'}
+                    onClick={() => this.props.history.push('/chat')}
+                >
                     Message Me
                 </Button>
-                <Button style={{marginLeft: '60px'}} size={'large'}>Add Friend?</Button>
+                <Button size={'large'}>Add Friend?</Button>
             </div>
 
             <Divider style={{color: 'black', font: 'bold', marginTop: '30px'}}>About Me</Divider>
