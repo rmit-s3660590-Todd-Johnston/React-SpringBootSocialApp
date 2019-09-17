@@ -24,7 +24,6 @@ public class UserBean {
 
 
     public UserBean() {
-        super();
     }
 
     public UserBean(Long id, String user_name, String name, String last_name, String password, boolean isMentor){
@@ -90,33 +89,6 @@ public class UserBean {
         return this.isMentor;
     }
 
-    public String addSubject(String subject)
-    {
-        //checking if all class slots are taken
-        for(int i = 0; i< this.subjects.length; i++)
-        {
-            if(this.subjects[i]==null)
-            {
-               this.subjects[i] = subject;
-                return "Subject Added Successfully";
-            }
-        }
-        //if no slot is found
-        return "Subjects full! Please remove a class before adding another";
-    }
-
-    public String removeSubject(String subject)
-    {
-        for(int i = 0; i< this.subjects.length; i++)
-        {
-            if(this.subjects[i].equals(subject))
-            {
-                this.subjects[i] = null;
-                return "Subject removed Successfully";
-            }
-        }
-        return "Unable to find subject";
-    }
 
     public String[] getSubjects()
     {
