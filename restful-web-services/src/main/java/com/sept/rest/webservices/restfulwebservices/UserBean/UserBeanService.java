@@ -11,17 +11,17 @@ public class UserBeanService {
 	private static String[] subjects = new String[4];;
 
 	static {
-		UserBean user1 = new UserBean((long) 1, "Sherry1377", "Shahrzad", "Rafezi", "Password123!", false);
-		UserBean user2 = new UserBean((long)2, "Jack27", "Jack", "Ryan", "Pa$$word123", true);
+		UserBean user1 = new UserBean(1, "Sherry1377", "Shahrzad", "Rafezi", "Password123!", false);
+		UserBean user2 = new UserBean(2, "Jack27", "Jack", "Ryan", "Pa$$word123", true);
 	}
 
 	public List<UserBean> retrieveAll() {
 		return UserBeans;
 	}
 
-	public UserBean retrieveUser(String userId) {
+	public UserBean retrieveUser(int userId) {
 		for (UserBean user : UserBeans) {
-			if (user.getId().equals(userId)) {
+			if (user.getId() == (userId)) {
 				return user;
 			}
 		}
