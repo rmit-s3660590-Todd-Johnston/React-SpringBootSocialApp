@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class UserBeanControllerTest {
+public class UserBeanDataBaseTest {
 
     @Autowired
     private MockMvc mvc;
@@ -27,7 +27,7 @@ public class UserBeanControllerTest {
     @MockBean
     private UserBeanService userBeanService;
 
-    UserBean mockUser = new UserBean(1, "Sherry1377", "Shahrzad", "Rafezi", "Password123!", false);
+    UserBean mockUser = new UserBean((long) 1, "Sherry1377", "Shahrzad", "Rafezi", "Password123!", false);
 
     @Test
     public void retrieveDetailsForUser() throws Exception {
@@ -43,4 +43,21 @@ public class UserBeanControllerTest {
 //
 //        JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
     }
+
+    @AfterEach
+    @Test
+    public void setDetailsForUser() throws Exception
+    {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/users/1").accept(MediaType.APPLICATION_JSON);
+
+        mockUser.setName("newName");
+        mockUser.setLast_name("newLastName");
+        mockUser.setMentor(true);
+
+        MvcResult result = mvc.perform(requestBuilder).andReturn();
+        String expected = "{id:1,user_name:Sherry1377,name:newName,last_name:newLastName,password:Password123,isMentor:true}";
+
+        assertEquals(expected,result.getResponse().getContentAsString(),false);
+    }
+
 }
