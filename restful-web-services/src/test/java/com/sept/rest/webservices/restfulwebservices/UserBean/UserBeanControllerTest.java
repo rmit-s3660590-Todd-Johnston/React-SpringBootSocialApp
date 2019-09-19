@@ -27,7 +27,7 @@ public class UserBeanDataBaseTest {
     @MockBean
     private UserBeanService userBeanService;
 
-    UserBean mockUser = new UserBean((long) 1, "Sherry1377", "Shahrzad", "Rafezi", "Password123!", false);
+    UserBean mockUser = new UserBean(1, "Sherry1377", "Shahrzad", "Rafezi", "Password123!", false);
 
     @Test
     public void retrieveDetailsForUser() throws Exception {
