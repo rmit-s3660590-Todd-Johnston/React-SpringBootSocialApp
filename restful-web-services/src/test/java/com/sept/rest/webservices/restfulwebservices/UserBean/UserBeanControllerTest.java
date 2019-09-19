@@ -1,7 +1,9 @@
 package com.sept.rest.webservices.restfulwebservices.UserBean;
 
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.runner.RunWith;
+import static org.junit.Assert.assertEquals;
 import org.mockito.Mockito;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
