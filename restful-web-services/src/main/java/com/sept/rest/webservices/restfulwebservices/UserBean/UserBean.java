@@ -8,6 +8,7 @@ public class UserBean {
 
     @Id
     @GeneratedValue
+    //
     private int id;
     @NotBlank
     private String user_name;

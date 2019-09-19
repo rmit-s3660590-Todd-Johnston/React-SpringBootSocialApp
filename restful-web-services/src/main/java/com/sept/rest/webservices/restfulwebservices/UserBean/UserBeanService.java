@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserBeanService {
 
+	//
 	private static List<UserBean> UserBeans = new ArrayList<>();
 	private static String[] subjects = new String[4];;
 
