@@ -23,9 +23,9 @@ class UserBeanService {
         //return axios.put(`${JPA_API_URL}/users/${id}`, userBean);
     }
 
-    createUserBean(name, id) {
+    createUserBean(id, user_name, name, last_name, password, isMentor) {
         //console.log('executed service')
-        return axios.post(`${JPA_API_URL}/users/${id}`, userBean);
+        return axios.post(`${JPA_API_URL}/users/${id}`, this.createUserBean(id, user_name, name, last_name, password, isMentor))
     }
 
 }
