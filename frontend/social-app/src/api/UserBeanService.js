@@ -1,10 +1,10 @@
 import axios from 'axios'
-import { API_URL, JPA_API_URL } from '../../Constants'
+import { API_URL, JPA_API_URL } from '../Constants'
 
 class UserBeanService {
 
     retrieveAllUserBeans() {
-        //console.log('executed service')
+        console.log('executed retrieveAllUserBeans')
         return axios.get(`${JPA_API_URL}/users/`);
     }
 
@@ -30,4 +30,4 @@ class UserBeanService {
 
 }
 
-export default new TodoDataService()
+export default new UserBeanService()
