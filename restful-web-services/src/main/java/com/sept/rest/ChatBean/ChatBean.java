@@ -1,4 +1,4 @@
-package com.sept.rest.Chat;
+package com.sept.rest.ChatBean;
 import com.sept.rest.webservices.restfulwebservices.UserBean.UserBean;
 
 import javax.persistence.*;
@@ -7,20 +7,20 @@ import java.util.ArrayList;
 
 @Entity
 @Table(name = "chat")
-public class Chat {
+public class ChatBean {
 	@Id
 	@GeneratedValue
-	private Long id;
+	private String id;
 
 	@NotBlank
 	private ArrayList<UserBean> userBeans;
 
 	@NotBlank
-	private ArrayList<Message> messages;
+	private ArrayList<MessageBean> messageBeans;
 
-	Chat(Long id)
+	ChatBean(String id)
 	{
-		this.id = id;
+		this.id = "c" + id;
 	}
 
 	public ArrayList<UserBean> getUserBeans()
@@ -38,14 +38,14 @@ public class Chat {
 		this.userBeans.add(userBean);
 	}
 
-	public void addMessage(Message message)
+	public void addMessage(MessageBean messageBean)
 	{
-		//if first message
-		if(this.messages == null)
+		//if first messageBean
+		if(this.messageBeans == null)
 		{
-			this.messages = new ArrayList<Message>();
+			this.messageBeans = new ArrayList<MessageBean>();
 		}
-		this.messages.add(message);
+		this.messageBeans.add(messageBean);
 	}
 
 }

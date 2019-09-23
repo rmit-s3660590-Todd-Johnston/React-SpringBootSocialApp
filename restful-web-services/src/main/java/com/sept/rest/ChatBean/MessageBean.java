@@ -1,4 +1,4 @@
-package com.sept.rest.Chat;
+package com.sept.rest.ChatBean;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "chat")
-public class Message {
+public class MessageBean {
 	@Id
 	@NotBlank
 	private DateTimeFormat timeStamp;
@@ -21,7 +21,7 @@ public class Message {
 	private Long userId;
 
 
-	Message(DateTimeFormat timeStamp, String content, Long userId)
+	MessageBean(DateTimeFormat timeStamp, String content, Long userId)
 	{
 		this.timeStamp = timeStamp;
 		this.content = content;
