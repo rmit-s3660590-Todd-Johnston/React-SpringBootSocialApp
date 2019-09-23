@@ -9,13 +9,21 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name = "chat")
 public class Message {
-
 	@NotBlank
-	private DateTimeFormat timestamp;
+	private DateTimeFormat timeStamp;
 
 	@NotBlank
 	private String content;
 
 	@NotBlank
-	private long UserId;
+	private Long UserId;
+
+
+	public String getContent() {
+		return this.content;
+	}
+
+	public DateTimeFormat getTimeStamp() {
+		return this.timeStamp;
+	}
 }
