@@ -21,10 +21,6 @@ public class UserBeanController {
     @Autowired
     UserBeanRepository userBeanRepository;
 
-    // TODO might use this
-    @Autowired
-    UserBeanService userBeanService;
-
     // Get All Users
     @GetMapping("/users")
     public List<UserBean> getAllUsers() {

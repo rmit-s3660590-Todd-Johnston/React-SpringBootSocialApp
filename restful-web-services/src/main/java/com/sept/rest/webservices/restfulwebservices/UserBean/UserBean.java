@@ -8,8 +8,7 @@ public class UserBean {
 
     @Id
     @GeneratedValue
-    //
-    private int id;
+    private String id;
     @NotBlank
     private String user_name;
     @NotBlank
@@ -25,11 +24,12 @@ public class UserBean {
 
 
     public UserBean() {
+        super();
     }
 
-    public UserBean(int id, String user_name, String name, String last_name, String password, boolean isMentor){
+    public UserBean(String id, String user_name, String name, String last_name, String password, boolean isMentor){
         super();
-        this.id = id;
+        this.id = "u" + id;
         this.user_name = user_name;
         this.name = name;
         this.last_name = last_name;
@@ -40,11 +40,11 @@ public class UserBean {
 
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -90,6 +90,33 @@ public class UserBean {
         return this.isMentor;
     }
 
+    public String addSubject(String subject)
+    {
+        //checking if all class slots are taken
+        for(int i = 0; i< this.subjects.length; i++)
+        {
+            if(this.subjects[i]==null)
+            {
+               this.subjects[i] = subject;
+                return "Subject Added Successfully";
+            }
+        }
+        //if no slot is found
+        return "Subjects full! Please remove a class before adding another";
+    }
+
+    public String removeSubject(String subject)
+    {
+        for(int i = 0; i< this.subjects.length; i++)
+        {
+            if(this.subjects[i].equals(subject))
+            {
+                this.subjects[i] = null;
+                return "Subject removed Successfully";
+            }
+        }
+        return "Unable to find subject";
+    }
 
     public String[] getSubjects()
     {
