@@ -62,11 +62,9 @@ export default class Search extends Component {
     };
 
     getData = () => {
-        console.log(this.state.users);
         UserBeanService.retrieveAllUserBeans()
             .then((res) => {
                 this.setState({users: res.data.result});
-                console.log(res.data.result.toString());
             });
     };
 
@@ -75,6 +73,7 @@ export default class Search extends Component {
     }
 
     render() {
+        console.log(this.state.users);
         return (
             <div>
                 <Input.Search placeholder="input search text" onSearch={value => console.log(value)} enterButton/>

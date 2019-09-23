@@ -5,7 +5,7 @@ class UserBeanService {
 
     retrieveAllUserBeans() {
         console.log('executed retrieveAllUserBeans');
-        return axios.get(`${API_URL}/users/`);
+        return axios.get(`${API_URL}/users`);
 
     }
 

@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200", allowedHeaders = "*")
 public class UserBeanController {
     //This annotation is used to wire the bean classes automatically.
     @Autowired
