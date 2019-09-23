@@ -1,5 +1,6 @@
 package com.sept.rest.webservices.restfulwebservices.UserBean;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ import javax.validation.Valid;
 
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200", allowedHeaders = "*")
 public class UserBeanController {
     //This annotation is used to wire the bean classes automatically.
     @Autowired
@@ -25,6 +26,11 @@ public class UserBeanController {
     @GetMapping("/users")
     public List<UserBean> getAllUsers() {
         return userBeanRepository.findAll();
+
+        //for testing user
+//        List<UserBean> users = new ArrayList<>();
+//        users.add(new UserBean((long) 10, "testUser", "name", "last_name", "password", false));
+//        return users;
     }
 
     // Create a new User

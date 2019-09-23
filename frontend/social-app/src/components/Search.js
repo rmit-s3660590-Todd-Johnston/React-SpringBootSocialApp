@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Input} from "antd";
-import axios from 'axios'
+import UserBeanService from "../api/UserBeanService";
 
 export default class Search extends Component {
     constructor(props) {
@@ -59,21 +59,23 @@ export default class Search extends Component {
         if (onSearch) {
             onSearch(this.state.value);
         }
-    }
-
-    getData = () => {
-        axios.get(`http://localhost:4200/users`)
-            .then(response => response.json())
-            .then(responseData => {
-                console.log(responseData);
-                this.setState({
-                    users: responseData
-                })
-            })
     };
 
+    getData = () => {
+        UserBeanService.retrieveAllUserBeans()
+            .then((res) => {
+                console.log("RES", res);
+                this.setState({users: res.data});
+            })
+            .catch(error => console.log(error));
+    };
+
+    componentDidMount() {
+        this.getData();
+    }
 
     render() {
+        console.log(this.state.users);
         return (
             <div>
                 <Input.Search placeholder="input search text" onSearch={value => console.log(value)} enterButton/>
