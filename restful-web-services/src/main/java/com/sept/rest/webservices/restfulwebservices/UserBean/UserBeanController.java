@@ -26,7 +26,7 @@ public class UserBeanController {
     @GetMapping("/users")
     public List<UserBean> getAllUsers() {
         return userBeanRepository.findAll();
-        
+
         //for testing user
 //        List<UserBean> users = new ArrayList<>();
 //        users.add(new UserBean((long) 10, "testUser", "name", "last_name", "password", false));
