@@ -64,8 +64,10 @@ export default class Search extends Component {
     getData = () => {
         UserBeanService.retrieveAllUserBeans()
             .then((res) => {
-                this.setState({users: res.data.result});
-            });
+                console.log("RES", res);
+                this.setState({users: res.data});
+            })
+            .catch(error => console.log(error));
     };
 
     componentDidMount() {
