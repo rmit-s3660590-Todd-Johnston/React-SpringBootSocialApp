@@ -1,33 +1,37 @@
 import React, {useState} from 'react';
 import {Layout, Menu} from "antd";
+import ChatWindow from "../containers/ChatWindow";
+import Wall from "../containers/Wall";
 
 
 interface GroupStudyScreenProps {
 }
 
 const GroupStudyScreen: React.FC<GroupStudyScreenProps> = (props: GroupStudyScreenProps) => {
-    const [openChat, setOpenChat] = useState('0');
+    const [openSection, setOpenSection] = useState('Board');
 
     return <Layout>
         <Layout.Sider>
             <Menu
                 mode="inline"
-                onSelect={({key}: {key: string}) => {
-                    setOpenChat(key)
+                onSelect={({key}: { key: string }) => {
+                    setOpenSection(key)
                 }}
-                defaultSelectedKeys={[openChat]}
+                defaultSelectedKeys={[openSection]}
                 style={{height: '100%', borderRight: 0}}
             >
-                {["Board", "Files", "Chat"].map((item, key) => <Menu.Item
-                    key={key}
+                {["Board", "Files", "Chat"].map((item) => <Menu.Item
+                    key={item}
                 >
                     {item}
                 </Menu.Item>)}
             </Menu>
         </Layout.Sider>
-        <Layout.Content style={{backgroundColor: "#FFFFFF", margin: 13}}>
+        {openSection === "Board" && <Wall/>}
+        {openSection === "Files" && <Layout.Content>
 
-        </Layout.Content>
+        </Layout.Content>}
+        {openSection === "Chat" && <ChatWindow/>}
     </Layout>;
 };
 

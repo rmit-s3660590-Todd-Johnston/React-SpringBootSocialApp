@@ -52,6 +52,11 @@ export default class ProfileScreen extends Component {
                 >
                     Message Me
                 </Button>
+                <Button style={{marginRight: 60}} type='primary' size={'large'}
+                    onClick={() => this.props.history.push('/study-group')}
+                >
+                    Add to study group
+                </Button>
                 <Button size={'large'}>Add Friend?</Button>
             </div>
 
