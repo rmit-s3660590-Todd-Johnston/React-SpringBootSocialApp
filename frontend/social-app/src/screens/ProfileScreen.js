@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import {Avatar, Descriptions, Divider, Tooltip, Button, List, Card, Badge, Icon, Typography} from "antd";
 import {Layout} from "antd";
+import AuthenticationService from "../AuthenticationService";
 
 const gridStyle = {
     width: '25%',
@@ -13,14 +14,18 @@ export default class ProfileScreen extends Component {
     constructor(props){
         super(props);
         this.state = {
-            name: 'Mark',
+            name: 'Temp Name',
             profilePic: "https://short-biography.com/wp-content/uploads/mark-zuckerberg/Mark-Zuckerberg-300x300.jpg"
         };
+
     }
+    getLoggedInUserData = () => {
+            this.setState({name: AuthenticationService.getLoggedInUserName()});
+        };
 
 
-    componentDidMount() {
-
+    componentWillMount() {
+        this.getLoggedInUserData();
     }
 
     render() {

@@ -1,8 +1,5 @@
 import axios from 'axios'
-
 import { API_URL } from './Constants'
-
-
 export const USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
 
 class AuthenticationService {
@@ -51,9 +48,9 @@ class AuthenticationService {
     }
 
     getLoggedInUserName() {
-        let user = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
-        if (user === null) return '';
-        return user
+        let userName = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
+        if (userName === null) return '';
+        return userName
     }
 
     setupAxiosInterceptors(token) {
