@@ -18,9 +18,10 @@ public class ChatBean {
 	@NotBlank
 	private ArrayList<MessageBean> messageBeans;
 
-	ChatBean(String id)
+	ChatBean(String id, ArrayList<UserBean> users)
 	{
 		this.id = "c" + id;
+		this.userBeans = users;
 	}
 
 	public ArrayList<UserBean> getUserBeans()
