@@ -1,4 +1,4 @@
-package com.sept.rest.ChatBean;
+package com.sept.rest.webservices.restfulwebservices.ChatBean;
 import com.sept.rest.webservices.restfulwebservices.UserBean.UserBean;
 
 import javax.persistence.*;

@@ -1,4 +1,4 @@
-package com.sept.rest.ChatBean;
+package com.sept.rest.webservices.restfulwebservices.ChatBean;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
