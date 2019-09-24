@@ -1,5 +1,6 @@
 package com.sept.rest.webservices.restfulwebservices.ChatBean;
 
+import com.sept.rest.webservices.restfulwebservices.UserBean.UserBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,5 +54,16 @@ public class ChatBeanController {
 		chatBeanRepository.delete(chat);
 		return ResponseEntity.ok().build();
 	}
+
+	//add a user to a chat
+	@PutMapping("/chat/{id}")
+	public ChatBean addUser(@PathVariable(value = "id") Long chatId, @Valid @RequestBody UserBean user)
+	{
+		ChatBean chat = chatBeanRepository.findById(chatId).get();
+		chat.addUserBean(user);
+		ChatBean updatedChat = chatBeanRepository.save(chat);
+		return updatedChat;
+	}
+
 
 }

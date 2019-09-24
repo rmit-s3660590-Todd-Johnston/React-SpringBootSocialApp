@@ -1,5 +1,6 @@
 package com.sept.rest.webservices.restfulwebservices.ChatBean;
 
+import com.sept.rest.webservices.restfulwebservices.UserBean.UserBean;
 import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -18,14 +19,14 @@ public class MessageBean {
 	private String content;
 
 	@NotBlank
-	private Long userId;
+	private UserBean user;
 
 
-	MessageBean(DateTimeFormat timeStamp, String content, Long userId)
+	MessageBean(DateTimeFormat timeStamp, String content, UserBean user)
 	{
 		this.timeStamp = timeStamp;
 		this.content = content;
-		this.userId = userId;
+		this.user = user;
 	}
 	public String getContent() {
 		return this.content;
@@ -35,8 +36,8 @@ public class MessageBean {
 		return this.timeStamp;
 	}
 
-	public Long getUserId()
+	public UserBean getUser()
 	{
-		return this.getUserId();
+		return this.user;
 	}
 }
