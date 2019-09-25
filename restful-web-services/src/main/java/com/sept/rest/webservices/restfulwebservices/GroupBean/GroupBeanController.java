@@ -46,7 +46,7 @@ public class GroupBeanController {
 		GroupBean group = groupBeanRepository.findById(groupId).get();
 		group.addUser(newUser);
 		UserBean user = userBeanRepository.findById(newUser.getId()).get();
-		user.deleteGroup(group);
+		user.addGroup(group);
 		userBeanRepository.save(user);
 		return groupBeanRepository.save(group);
 	}
@@ -57,6 +57,9 @@ public class GroupBeanController {
 	{
 		GroupBean group = groupBeanRepository.findById(groupId).get();
 		group.deleteUser(user);
+		UserBean deletedUser = userBeanRepository.findById(user.getId()).get();
+		deletedUser.deleteGroup(group);
+		userBeanRepository.save(deletedUser);
 		return groupBeanRepository.save(group);
 	}
 

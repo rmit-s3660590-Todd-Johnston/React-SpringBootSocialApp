@@ -1,6 +1,7 @@
 package com.sept.rest.webservices.restfulwebservices.ChatBean;
 
 import com.sept.rest.webservices.restfulwebservices.UserBean.UserBean;
+import com.sept.rest.webservices.restfulwebservices.UserBean.UserBeanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,8 @@ import java.util.List;
 public class ChatBeanController {
 	@Autowired
 	ChatBeanRepository chatBeanRepository;
+	@Autowired
+	UserBeanRepository userBeanRepository;
 
 	//return all chatBeans
 	@GetMapping("/chat")
@@ -62,7 +65,10 @@ public class ChatBeanController {
 		ChatBean chat = chatBeanRepository.findById(chatId).get();
 		chat.addUserBean(user);
 		ChatBean updatedChat = chatBeanRepository.save(chat);
-		return updatedChat;
+		UserBean addedUser = userBeanRepository.findById(user.getId()).get();
+		addedUser.addChat(chat);
+		userBeanRepository.save(addedUser);
+		return chatBeanRepository.save(updatedChat);
 	}
 
 	//delete a user from a chat
@@ -71,6 +77,9 @@ public class ChatBeanController {
 	{
 		ChatBean chat = chatBeanRepository.findById(chatId).get();
 		chat.deleteUserBean(user);
+		UserBean deletedUser = userBeanRepository.findById(user.getId()).get();
+		deletedUser.deleteChat(chat);
+		userBeanRepository.save(deletedUser);
 		return chatBeanRepository.save(chat);
 
 	}
