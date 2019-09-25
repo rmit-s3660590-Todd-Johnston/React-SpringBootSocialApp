@@ -10,18 +10,30 @@ import java.util.ArrayList;
 public class ChatBean {
 	@Id
 	@GeneratedValue
-	private String id;
+	private Long id;
 
+	@NotBlank
+	private final String type = "c";
 	@NotBlank
 	private ArrayList<UserBean> userBeans;
 
 	@NotBlank
 	private ArrayList<MessageBean> messageBeans;
 
-	ChatBean(String id, ArrayList<UserBean> users)
+	ChatBean(Long id, ArrayList<UserBean> users)
 	{
-		this.id = "c" + id;
+		this.id = id;
 		this.userBeans = users;
+	}
+
+	public Long getId()
+	{
+		return this.id;
+	}
+
+	public String getType()
+	{
+		return this.type;
 	}
 
 	public ArrayList<UserBean> getUserBeans()

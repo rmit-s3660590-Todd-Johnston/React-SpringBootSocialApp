@@ -16,6 +16,9 @@ public class MessageBean {
 	private DateTimeFormat timeStamp;
 
 	@NotBlank
+	private final String type = "m";
+
+	@NotBlank
 	private String content;
 
 	@NotBlank
@@ -39,5 +42,10 @@ public class MessageBean {
 	public UserBean getUser()
 	{
 		return this.user;
+	}
+
+	public String getType()
+	{
+		return type;
 	}
 }
