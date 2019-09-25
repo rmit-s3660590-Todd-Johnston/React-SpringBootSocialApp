@@ -65,5 +65,15 @@ public class ChatBeanController {
 		return updatedChat;
 	}
 
+	//delete a user from a chat
+	@DeleteMapping("/chat/{id}")
+	public ChatBean deleteUser(@PathVariable(value = "id")Long chatId, @Valid @RequestBody UserBean user)
+	{
+		ChatBean chat = chatBeanRepository.findById(chatId).get();
+		chat.deleteUserBean(user);
+		return chatBeanRepository.save(chat);
+
+	}
+
 
 }

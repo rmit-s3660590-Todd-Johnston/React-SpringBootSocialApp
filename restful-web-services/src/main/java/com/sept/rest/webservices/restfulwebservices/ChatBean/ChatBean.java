@@ -49,4 +49,8 @@ public class ChatBean {
 		this.messageBeans.add(messageBean);
 	}
 
+	public void deleteUserBean(UserBean user)
+	{
+		userBeans.remove(user);
+	}
 }
