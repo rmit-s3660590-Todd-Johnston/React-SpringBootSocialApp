@@ -1,6 +1,7 @@
 package com.sept.rest.webservices.restfulwebservices.GroupBean;
 
 import com.sept.rest.webservices.restfulwebservices.UserBean.UserBean;
+import com.sept.rest.webservices.restfulwebservices.UserBean.UserBeanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,8 @@ import java.util.List;
 public class GroupBeanController {
 	@Autowired
 	GroupBeanRepository groupBeanRepository;
+	@Autowired
+	UserBeanRepository userBeanRepository;
 
 	//create new user and save to db
 	@PostMapping
@@ -42,6 +45,9 @@ public class GroupBeanController {
 	{
 		GroupBean group = groupBeanRepository.findById(groupId).get();
 		group.addUser(newUser);
+		UserBean user = userBeanRepository.findById(newUser.getId()).get();
+		user.deleteGroup(group);
+		userBeanRepository.save(user);
 		return groupBeanRepository.save(group);
 	}
 

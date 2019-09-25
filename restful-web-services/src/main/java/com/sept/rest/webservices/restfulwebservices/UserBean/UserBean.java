@@ -13,7 +13,9 @@ public class UserBean {
 
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
+    @NotBlank
+    private final String type = "u";
     @NotBlank
     private String user_name;
     @NotBlank
@@ -36,9 +38,9 @@ public class UserBean {
         super();
     }
 
-    public UserBean(String id, String user_name, String name, String last_name, String password, boolean isMentor){
+    public UserBean(Long id, String user_name, String name, String last_name, String password, boolean isMentor){
         super();
-        this.id = "u" + id;
+        this.id = id;
         this.user_name = user_name;
         this.name = name;
         this.last_name = last_name;
@@ -52,11 +54,16 @@ public class UserBean {
 
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public String getType()
+    {
+        return type;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
