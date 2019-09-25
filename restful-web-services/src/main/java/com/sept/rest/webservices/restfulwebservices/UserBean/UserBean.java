@@ -46,6 +46,9 @@ public class UserBean {
         this.isMentor = isMentor;
         this.subjects = new String[4];//uninitialised list of classes, to be done via addclass method after user creation
         //max classes/subjects
+        this.userChats = new ArrayList<>();
+        this.userGroups = new ArrayList<>();
+
 
     }
 
