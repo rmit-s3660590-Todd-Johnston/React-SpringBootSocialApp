@@ -1,6 +1,11 @@
 package com.sept.rest.webservices.restfulwebservices.UserBean;
+import com.sept.rest.webservices.restfulwebservices.ChatBean.ChatBean;
+import com.sept.rest.webservices.restfulwebservices.GroupBean.GroupBean;
+import com.sept.rest.webservices.restfulwebservices.WallBean.WallBean;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "userBean")
@@ -21,6 +26,10 @@ public class UserBean {
     private boolean isMentor;
     @NotBlank
     private String[] subjects;
+
+    private ArrayList<ChatBean> userChats;
+    private ArrayList<GroupBean> userGroups;
+    private WallBean userWall;
 
 
     public UserBean() {
@@ -126,5 +135,44 @@ public class UserBean {
     public void setSubjects(String[] subjects)
     {
         this.subjects = subjects;
+    }
+
+    public void addChat(ChatBean chat)
+    {
+        this.userChats.add(chat);
+    }
+
+    public void deleteChat(ChatBean chat)
+    {
+        this.userChats.remove(chat);
+    }
+
+    public void addGroup(GroupBean group)
+    {
+        this.userGroups.add(group);
+    }
+
+    public void deleteGroup(GroupBean group)
+    {
+        this.userGroups.remove(group);
+    }
+
+    public void setUserWall(WallBean wall)
+    {
+        this.userWall = wall;
+    }
+
+    public WallBean getUserWall()
+    {
+        return this.userWall;
+    }
+
+    public ArrayList<ChatBean> getUserChats()
+    {
+        return this.userChats;
+    }
+
+    public ArrayList<GroupBean> getUserGroups() {
+        return userGroups;
     }
 }
