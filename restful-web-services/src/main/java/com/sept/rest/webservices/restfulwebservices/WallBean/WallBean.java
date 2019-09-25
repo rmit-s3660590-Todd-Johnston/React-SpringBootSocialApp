@@ -1,18 +1,26 @@
 package com.sept.rest.webservices.restfulwebservices.WallBean;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "wallBean")
 public class WallBean {
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
+    @NotBlank
+    private final String type = "w";
     private String post;
 
-    public WallBean(String id, String post){
-        this.id = "w" + id;
+    public WallBean(Long id, String post){
+        this.id = id;
         this.post = post;
+    }
+
+    public String getType()
+    {
+        return this.type;
     }
 
     public String getPost() {

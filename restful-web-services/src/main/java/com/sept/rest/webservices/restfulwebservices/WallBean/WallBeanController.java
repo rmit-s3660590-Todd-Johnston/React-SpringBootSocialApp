@@ -1,4 +1,6 @@
 package com.sept.rest.webservices.restfulwebservices.WallBean;
+import com.sept.rest.webservices.restfulwebservices.UserBean.UserBean;
+import com.sept.rest.webservices.restfulwebservices.UserBean.UserBeanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,8 @@ public class WallBeanController {
 
     @Autowired
     WallBeanRepository wallBeanRepository;
+    @Autowired
+    UserBeanRepository userBeanRepository;
 
     // Get All Posts
     @GetMapping("/posts")
@@ -35,19 +39,27 @@ public class WallBeanController {
 
     // Update a Post
     @PutMapping("/posts/{id}")
-    public WallBean updatePost(@PathVariable(value = "id") Long postId, @Valid @RequestBody WallBean postDetails){
+    public WallBean updatePost(@PathVariable(value = "id") Long postId, @Valid @RequestBody WallBean postDetails, @Valid @RequestBody UserBean user){
         WallBean wall = wallBeanRepository.findById(postId).get();
         wall.setPost(postDetails.getPost());
         WallBean updatedWall = wallBeanRepository.save(wall);
+
+        UserBean postUser = userBeanRepository.findById(user.getId()).get();
+        postUser.setUserWall(updatedWall);
+        userBeanRepository.save(postUser);
         return updatedWall;
     }
 
 
     // Delete a post
     @DeleteMapping("/posts/{id}")
-    public ResponseEntity<?> deletePost(@PathVariable(value = "id") Long postId){
+    public ResponseEntity<?> deletePost(@PathVariable(value = "id") Long postId, @Valid @RequestBody UserBean user){
         WallBean wall = wallBeanRepository.findById(postId).get();
         wallBeanRepository.delete(wall);
+
+        UserBean postUser = userBeanRepository.findById(user.getId()).get();
+        postUser.setUserWall(null);
+        userBeanRepository.save(postUser);
         return ResponseEntity.ok().build();
     }
 
