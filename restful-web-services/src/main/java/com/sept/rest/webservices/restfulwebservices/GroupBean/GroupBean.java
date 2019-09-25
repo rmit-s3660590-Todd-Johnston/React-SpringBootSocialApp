@@ -59,5 +59,10 @@ public class GroupBean {
 		users.add(user);
 	}
 
+	public void deleteUser(UserBean user)
+	{
+		users.remove(user);
+	}
+
 
 }
