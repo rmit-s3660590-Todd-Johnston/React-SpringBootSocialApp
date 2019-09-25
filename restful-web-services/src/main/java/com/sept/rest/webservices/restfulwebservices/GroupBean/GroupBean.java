@@ -16,8 +16,10 @@ import java.util.WeakHashMap;
 public class GroupBean {
 	@Id
 	@GeneratedValue
-	private String id;
+	private Long id;
 
+	@NotBlank
+	private final String type = "g";
 	@NotBlank
 	private String groupName;
 
@@ -26,17 +28,22 @@ public class GroupBean {
 	@NotBlank
 	private WallBean wallBean;
 
-	public GroupBean(String id, String groupName, WallBean wallBean)
+	public GroupBean(Long id, String groupName, WallBean wallBean)
 	{
-		this.id = "g"+ id;
+		this.id = id;
 		this.users = new ArrayList<UserBean>();
 		this.groupName = groupName;
 		this.wallBean = wallBean;
 	}
 
-	public String getId()
+	public Long getId()
 	{
 		return this.id;
+	}
+
+	public String getType()
+	{
+		return type;
 	}
 
 	public String getGroupName()
