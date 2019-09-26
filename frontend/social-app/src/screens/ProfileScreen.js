@@ -3,6 +3,7 @@ import axios from 'axios'
 import {Avatar, Descriptions, Divider, Tooltip, Button, List, Card, Badge, Icon, Typography} from "antd";
 import {Layout} from "antd";
 import AuthenticationService from "../AuthenticationService";
+import UserBeanService from "../api/UserBeanService";
 
 const gridStyle = {
     width: '25%',
@@ -22,8 +23,8 @@ export default class ProfileScreen extends Component {
 
     }
     getLoggedInUserData = () => {
-            this.setState({userName: AuthenticationService.getLoggedInUserName()});
-            // this.setState({firstName: });
+             let user = UserBeanService.retrieveUserBean(AuthenticationService.getLoggedInUserName());
+             console.log(user.data);
             // this.setState({lastName: });
 
     };
