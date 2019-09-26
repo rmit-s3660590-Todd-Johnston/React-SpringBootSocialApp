@@ -14,18 +14,27 @@ export default class ProfileScreen extends Component {
     constructor(props){
         super(props);
         this.state = {
-            name: 'Temp Name',
+            userName: 'Temp Name',
+            firstName: 'First',
+            lastName: 'Last',
             profilePic: "https://short-biography.com/wp-content/uploads/mark-zuckerberg/Mark-Zuckerberg-300x300.jpg"
         };
 
     }
     getLoggedInUserData = () => {
-            this.setState({name: AuthenticationService.getLoggedInUserName()});
-        };
+            this.setState({userName: AuthenticationService.getLoggedInUserName()});
+            // this.setState({firstName: });
+            // this.setState({lastName: });
+
+    };
 
 
     componentWillMount() {
         this.getLoggedInUserData();
+        if (this.state.firstName === "First"){
+            this.setState({userName: "Name"});
+            this.setState({lastName: "Error"});
+        }
     }
 
     render() {
@@ -43,7 +52,7 @@ export default class ProfileScreen extends Component {
             </div>
 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh'}}>
-                <h1>{this.state.name}</h1>
+                <h1>{this.state.firstName + " " + this.state.lastName}</h1>
             </div>
 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
