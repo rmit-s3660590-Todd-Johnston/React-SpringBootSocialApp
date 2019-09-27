@@ -21,10 +21,15 @@ export default class ProfileScreen extends Component {
             profilePic: "https://short-biography.com/wp-content/uploads/mark-zuckerberg/Mark-Zuckerberg-300x300.jpg"
         };
 
-    }
+    };
+
     getLoggedInUserData = () => {
-             let user = UserBeanService.retrieveUserBean(AuthenticationService.getLoggedInUserName());
-             console.log(user.data);
+        console.log("Logged in user: " + AuthenticationService.getLoggedInUserName());
+             UserBeanService.retrieveUserBeanByUserName(AuthenticationService.getLoggedInUserName())
+                 .then(res =>
+                     console.log(res))
+                 .catch(err => console.error(err));
+
             // this.setState({lastName: });
 
     };
@@ -33,7 +38,7 @@ export default class ProfileScreen extends Component {
     componentWillMount() {
         this.getLoggedInUserData();
         if (this.state.firstName === "First"){
-            this.setState({userName: "Name"});
+            this.setState({firstName: "Name"});
             this.setState({lastName: "Error"});
         }
     }
