@@ -28,7 +28,7 @@ public class UserBeanService {
 				return iterator.next();
 			}
 		}
-		return null;
+			return new UserBean((long) 666, "error", "error", "error", "password", false);
 	}
 
 	public Optional<UserBean> findById(Long id)

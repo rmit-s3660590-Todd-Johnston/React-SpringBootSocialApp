@@ -20,7 +20,6 @@ export default class ProfileScreen extends Component {
             lastName: 'Last',
             profilePic: "https://short-biography.com/wp-content/uploads/mark-zuckerberg/Mark-Zuckerberg-300x300.jpg"
         };
-
     };
 
     getLoggedInUserData = () => {

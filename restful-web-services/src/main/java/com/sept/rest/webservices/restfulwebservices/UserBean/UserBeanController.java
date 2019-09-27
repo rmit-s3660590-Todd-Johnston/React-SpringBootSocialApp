@@ -35,7 +35,7 @@ public class UserBeanController {
     }
 
     // Get a Single user
-    @GetMapping("/users/{id}")
+    @RequestMapping("/users/{id}")
     public UserBean getUserById(@PathVariable(value = "id") Long UserId){
         return userBeanRepository.findById(UserId).get();
         //it says incompatible types, because it uses Long? but if I put get() Method it works
@@ -43,6 +43,13 @@ public class UserBeanController {
     //find by username
     @GetMapping("/users/{user_name}")
     public UserBean findByUserName(@RequestParam(value="user_name") String user_name){
+        return service.findByUsername(user_name);
+    }
+
+    //find by username
+    @GetMapping("/users/{user_name}")
+    public UserBean findByUserName(@PathVariable(value = "user_name") String user_name)
+    {
         return service.findByUsername(user_name);
     }
 
