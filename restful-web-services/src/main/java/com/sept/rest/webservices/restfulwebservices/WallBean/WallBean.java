@@ -9,8 +9,11 @@ public class WallBean {
     @Id
     @GeneratedValue
     private Long id;
+
     @NotBlank
     private final String type = "w";
+
+    @NotBlank
     private String post;
 
     public WallBean(Long id, String post){
@@ -31,4 +34,11 @@ public class WallBean {
         this.post = post;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

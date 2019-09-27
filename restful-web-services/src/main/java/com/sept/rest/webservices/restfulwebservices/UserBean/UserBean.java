@@ -29,9 +29,9 @@ public class UserBean {
     @NotBlank
     private String[] subjects;
 
-    private ArrayList<ChatBean> userChats;
-    private ArrayList<GroupBean> userGroups;
-    private WallBean userWall;
+    private ArrayList<Long> userChats;
+    private ArrayList<Long> userGroups;
+    private Long userWallID;
 
 
     public UserBean() {
@@ -149,40 +149,40 @@ public class UserBean {
 
     public void addChat(ChatBean chat)
     {
-        this.userChats.add(chat);
+        this.userChats.add(chat.getId());
     }
 
     public void deleteChat(ChatBean chat)
     {
-        this.userChats.remove(chat);
+        this.userChats.remove(chat.getId());
     }
 
     public void addGroup(GroupBean group)
     {
-        this.userGroups.add(group);
+        this.userGroups.add(group.getId());
     }
 
     public void deleteGroup(GroupBean group)
     {
-        this.userGroups.remove(group);
+        this.userGroups.remove(group.getId());
     }
 
     public void setUserWall(WallBean wall)
     {
-        this.userWall = wall;
+        this.userWallID = wall.getId();
     }
 
-    public WallBean getUserWall()
+    public Long getUserWall()
     {
-        return this.userWall;
+        return this.userWallID;
     }
 
-    public ArrayList<ChatBean> getUserChats()
+    public ArrayList<Long> getUserChats()
     {
         return this.userChats;
     }
 
-    public ArrayList<GroupBean> getUserGroups() {
+    public ArrayList<Long> getUserGroups() {
         return userGroups;
     }
 }
