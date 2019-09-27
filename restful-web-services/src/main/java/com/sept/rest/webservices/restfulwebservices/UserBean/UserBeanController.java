@@ -14,6 +14,7 @@ public class UserBeanController {
     //This annotation is used to wire the bean classes automatically.
     @Autowired
     UserBeanRepository userBeanRepository;
+    @Autowired
     UserBeanService service;
 
     // Get All Users
