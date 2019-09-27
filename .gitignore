@@ -1,3 +1,12 @@
+
+.idea/discord.xml
+.idea/vcs.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/doughnuts.iml
+.idea/workspace.xml
+.idea/workspace.xml
+
 *#
 *.iml
 *.ipr
@@ -37,3 +46,4 @@ transaction-logs
 secrets.yml
 .gradletasknamecache
 .sts4-cache
+restful-web-services/restful-web-services.iml

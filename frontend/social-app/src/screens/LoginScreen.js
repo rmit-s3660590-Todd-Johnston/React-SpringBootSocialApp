@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Form, Icon, Input, Typography} from 'antd'
+import {Button, Form, Icon, Input, Typography, Layout} from 'antd'
 import AuthenticationService from "../AuthenticationService";
 
 
@@ -40,7 +40,7 @@ class LoginScreen extends Component {
         const usernameError = isFieldTouched('username') && getFieldError('username');
         const passwordError = isFieldTouched('password') && getFieldError('password');
         return (
-            <>
+            <Layout.Content style={{padding: 13}}>
                 <Form layout="vertical" onSubmit={this.handleSubmit}>
                     <Form.Item validateStatus={usernameError ? 'error' : ''} help={usernameError || ''}>
                         {getFieldDecorator('username', {
@@ -72,7 +72,7 @@ class LoginScreen extends Component {
                     </Form.Item>
                 </Form>
                 <a onClick={() => this.props.history.push("/registration")}>First time? Register</a>
-            </>
+            </Layout.Content>
         );
     }
 }
