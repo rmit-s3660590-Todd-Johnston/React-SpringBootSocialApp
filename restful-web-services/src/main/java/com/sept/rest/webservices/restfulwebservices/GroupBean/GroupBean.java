@@ -2,7 +2,7 @@ package com.sept.rest.webservices.restfulwebservices.GroupBean;
 
 import com.sept.rest.webservices.restfulwebservices.UserBean.UserBean;
 import com.sept.rest.webservices.restfulwebservices.WallBean.WallBean;
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
