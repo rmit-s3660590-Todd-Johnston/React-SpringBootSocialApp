@@ -25,6 +25,7 @@ public class UserBeanService {
 		List<UserBean> users = userBeanRepository.findAll();
 		Iterator<UserBean> iterator = users.iterator();
 
+		//otherwise iterate through list
 		while(iterator.hasNext())
 		{
 			if (iterator.next().getUser_name().compareTo(userName)==0)

@@ -46,7 +46,7 @@ public class UserBeanController {
     @GetMapping("/users/{user_name}")
     public UserBean findByUserName(@PathVariable(value = "user_name") String user_name)
     {
-        return service.findByUsername(user_name);
+        return userBeanRepository.findByUserName(user_name);
     }
 
     // Update a user
