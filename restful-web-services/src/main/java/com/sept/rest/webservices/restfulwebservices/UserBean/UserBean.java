@@ -1,6 +1,11 @@
 package com.sept.rest.webservices.restfulwebservices.UserBean;
+import com.sept.rest.webservices.restfulwebservices.ChatBean.ChatBean;
+import com.sept.rest.webservices.restfulwebservices.GroupBean.GroupBean;
+import com.sept.rest.webservices.restfulwebservices.WallBean.WallBean;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "userBean")
@@ -9,6 +14,8 @@ public class UserBean {
     @Id
     @GeneratedValue
     private Long id;
+    @NotBlank
+    private final String type = "u";
     @NotBlank
     private String user_name;
     @NotBlank
@@ -21,6 +28,10 @@ public class UserBean {
     private boolean isMentor;
     @NotBlank
     private String[] subjects;
+
+    private ArrayList<ChatBean> userChats;
+    private ArrayList<GroupBean> userGroups;
+    private WallBean userWall;
 
 
     public UserBean() {
@@ -37,11 +48,19 @@ public class UserBean {
         this.isMentor = isMentor;
         this.subjects = new String[4];//uninitialised list of classes, to be done via addclass method after user creation
         //max classes/subjects
+        this.userChats = new ArrayList<>();
+        this.userGroups = new ArrayList<>();
+
 
     }
 
     public Long getId() {
         return id;
+    }
+
+    public String getType()
+    {
+        return type;
     }
 
     public void setId(Long id) {
@@ -126,5 +145,44 @@ public class UserBean {
     public void setSubjects(String[] subjects)
     {
         this.subjects = subjects;
+    }
+
+    public void addChat(ChatBean chat)
+    {
+        this.userChats.add(chat);
+    }
+
+    public void deleteChat(ChatBean chat)
+    {
+        this.userChats.remove(chat);
+    }
+
+    public void addGroup(GroupBean group)
+    {
+        this.userGroups.add(group);
+    }
+
+    public void deleteGroup(GroupBean group)
+    {
+        this.userGroups.remove(group);
+    }
+
+    public void setUserWall(WallBean wall)
+    {
+        this.userWall = wall;
+    }
+
+    public WallBean getUserWall()
+    {
+        return this.userWall;
+    }
+
+    public ArrayList<ChatBean> getUserChats()
+    {
+        return this.userChats;
+    }
+
+    public ArrayList<GroupBean> getUserGroups() {
+        return userGroups;
     }
 }
