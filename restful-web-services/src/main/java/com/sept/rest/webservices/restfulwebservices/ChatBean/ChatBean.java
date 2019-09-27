@@ -1,68 +1,66 @@
 package com.sept.rest.webservices.restfulwebservices.ChatBean;
-import com.sept.rest.webservices.restfulwebservices.UserBean.UserBean;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 
 @Entity
 @Table(name = "chat")
 public class ChatBean {
-	@Id
-	@GeneratedValue
-	private Long id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-	@NotBlank
-	private final String type = "c";
-	@NotBlank
-	private ArrayList<UserBean> userBeans;
+    @NotBlank
+    private final String type = "c";
 
-	@NotBlank
-	private ArrayList<MessageBean> messageBeans;
+    @NotBlank
+    private ArrayList<Long> userIDs;
 
-	ChatBean(Long id, ArrayList<UserBean> users)
-	{
-		this.id = id;
-		this.userBeans = users;
-	}
+    @NotBlank
+    private ArrayList<Long> messageIDs;
 
-	public Long getId()
-	{
-		return this.id;
-	}
+    ChatBean(Long id, ArrayList<Long> users) {
+        this.id = id;
+        this.userIDs = users;
+    }
 
-	public String getType()
-	{
-		return this.type;
-	}
+    public Long getId() {
+        return this.id;
+    }
 
-	public ArrayList<UserBean> getUserBeans()
-	{
-		return this.userBeans;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void addUserBean(UserBean userBean)
-	{
-		// if new chat instance
-		if(this.userBeans == null)
-		{
-			this.userBeans = new ArrayList<UserBean>();
-		}
-		this.userBeans.add(userBean);
-	}
+    public String getType() {
+        return this.type;
+    }
 
-	public void addMessage(MessageBean messageBean)
-	{
-		//if first messageBean
-		if(this.messageBeans == null)
-		{
-			this.messageBeans = new ArrayList<MessageBean>();
-		}
-		this.messageBeans.add(messageBean);
-	}
+    public ArrayList<Long> getUserIds() {
+        return this.userIDs;
+    }
 
-	public void deleteUserBean(UserBean user)
-	{
-		userBeans.remove(user);
-	}
+    public void addUserBean(Long userBean) {
+        // if new chat instance
+        if (this.userIDs == null) {
+            this.userIDs = new ArrayList<Long>();
+        }
+        this.userIDs.add(userBean);
+    }
+
+    public void addMessage(Long messageID) {
+        //if first messageBean
+        if (this.messageIDs == null) {
+            this.messageIDs = new ArrayList<Long>();
+        }
+        this.messageIDs.add(messageID);
+    }
+
+    public void deleteUserBean(Long user) {
+        userIDs.remove(user);
+    }
 }

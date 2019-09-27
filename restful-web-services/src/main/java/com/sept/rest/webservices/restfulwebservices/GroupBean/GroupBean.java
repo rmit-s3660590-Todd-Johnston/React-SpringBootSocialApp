@@ -20,20 +20,22 @@ public class GroupBean {
 
 	@NotBlank
 	private final String type = "g";
+
 	@NotBlank
 	private String groupName;
 
-	private ArrayList<UserBean> users;
+	@NotBlank
+	private ArrayList<Long> users;
 
 	@NotBlank
-	private WallBean wallBean;
+	private Long wallId;
 
 	public GroupBean(Long id, String groupName, WallBean wallBean)
 	{
 		this.id = id;
-		this.users = new ArrayList<UserBean>();
+		this.users = new ArrayList<>();
 		this.groupName = groupName;
-		this.wallBean = wallBean;
+		this.wallId = wallBean.getId();
 	}
 
 	public Long getId()
@@ -51,24 +53,24 @@ public class GroupBean {
 		return this.groupName;
 	}
 
-	public ArrayList<UserBean> getUsers()
+	public ArrayList<Long> getUsers()
 	{
 		return this.users;
 	}
 
-	public WallBean getWallBean()
+	public Long getWallBean()
 	{
-		return this.wallBean;
+		return this.wallId;
 	}
 
 	public void addUser(UserBean user)
 	{
-		users.add(user);
+		users.add(user.getId());
 	}
 
 	public void deleteUser(UserBean user)
 	{
-		users.remove(user);
+		users.remove(user.getId());
 	}
 
 

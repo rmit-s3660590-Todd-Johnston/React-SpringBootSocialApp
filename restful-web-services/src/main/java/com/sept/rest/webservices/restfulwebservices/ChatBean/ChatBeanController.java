@@ -44,7 +44,7 @@ public class ChatBeanController {
 			 public ChatBean addMessage(@PathVariable(value = "id") Long chatId, @Valid @RequestBody MessageBean messageDetails)
 	{
 		ChatBean chat = chatBeanRepository.findById(chatId).get();
-		chat.addMessage(messageDetails);
+		chat.addMessage(messageDetails.getId());
 		ChatBean updatedChat = chatBeanRepository.save(chat);
 		return updatedChat;
 	}
@@ -63,7 +63,7 @@ public class ChatBeanController {
 	public ChatBean addUser(@PathVariable(value = "id") Long chatId, @Valid @RequestBody UserBean user)
 	{
 		ChatBean chat = chatBeanRepository.findById(chatId).get();
-		chat.addUserBean(user);
+		chat.addUserBean(user.getId());
 		ChatBean updatedChat = chatBeanRepository.save(chat);
 		UserBean addedUser = userBeanRepository.findById(user.getId()).get();
 		addedUser.addChat(chat);
@@ -76,7 +76,7 @@ public class ChatBeanController {
 	public ChatBean deleteUser(@PathVariable(value = "id")Long chatId, @Valid @RequestBody UserBean user)
 	{
 		ChatBean chat = chatBeanRepository.findById(chatId).get();
-		chat.deleteUserBean(user);
+		chat.deleteUserBean(user.getId());
 		UserBean deletedUser = userBeanRepository.findById(user.getId()).get();
 		deletedUser.deleteChat(chat);
 		userBeanRepository.save(deletedUser);

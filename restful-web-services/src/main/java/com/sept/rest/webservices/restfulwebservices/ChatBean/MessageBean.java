@@ -1,10 +1,11 @@
 package com.sept.rest.webservices.restfulwebservices.ChatBean;
 
 import com.sept.rest.webservices.restfulwebservices.UserBean.UserBean;
-import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -12,6 +13,9 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "chat")
 public class MessageBean {
 	@Id
+	@GeneratedValue
+	private Long id;
+
 	@NotBlank
 	private DateTimeFormat timeStamp;
 
@@ -48,4 +52,12 @@ public class MessageBean {
 	{
 		return type;
 	}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
