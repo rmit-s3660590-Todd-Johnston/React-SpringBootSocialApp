@@ -20,6 +20,12 @@ public class UserBeanController {
     // Get All Users
     @GetMapping("/users")
     public List<UserBean> getAllUsers() {
+        //create test users
+        userBeanRepository.save(new UserBean((long) 1, "sept", "Test1", "Jeffery", "password", false));
+        userBeanRepository.save(new UserBean((long) 2, "testUser2", "Test2", "Johnson", "password", false));
+        userBeanRepository.save(new UserBean((long) 3, "testMentor", "TestMentor1", "Mentor", "password", true));
+        userBeanRepository.save(new UserBean((long) 4, "testMentor2", "TestMentor2", "Mentor", "password", true));
+
         return userBeanRepository.findAll();
     }
 
