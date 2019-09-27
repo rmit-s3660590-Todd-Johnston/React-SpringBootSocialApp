@@ -1,10 +1,11 @@
 package com.sept.rest.webservices.restfulwebservices.GroupBean;
 
 import com.sept.rest.webservices.restfulwebservices.UserBean.UserBean;
+import com.sept.rest.webservices.restfulwebservices.WallBean.WallBean;
+import javax.persistence.Id;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
@@ -23,11 +24,15 @@ public class GroupBean {
 	private String groupName;
 
 	@NotBlank
+	private ArrayList<Long> users;
+
+	@NotBlank
 	private Long wallId;
 
 	public GroupBean(Long id, String groupName, Long wallBean)
 	{
 		this.id = id;
+		this.users = new ArrayList<>();
 		this.groupName = groupName;
 		this.wallId = wallBean;
 	}
@@ -49,7 +54,7 @@ public class GroupBean {
 
 	public ArrayList<Long> getUsers()
 	{
-	    return null;
+		return this.users;
 	}
 
 	public Long getWallBean()
@@ -59,12 +64,12 @@ public class GroupBean {
 
 	public void addUser(UserBean user)
 	{
-
+		users.add(user.getId());
 	}
 
 	public void deleteUser(UserBean user)
 	{
-
+		users.remove(user.getId());
 	}
 
 
