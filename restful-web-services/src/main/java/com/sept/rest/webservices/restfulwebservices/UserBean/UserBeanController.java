@@ -3,14 +3,8 @@ package com.sept.rest.webservices.restfulwebservices.UserBean;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 
 
@@ -20,6 +14,7 @@ public class UserBeanController {
     //This annotation is used to wire the bean classes automatically.
     @Autowired
     UserBeanRepository userBeanRepository;
+    UserBeanService service;
 
     // Get All Users
     @GetMapping("/users")
