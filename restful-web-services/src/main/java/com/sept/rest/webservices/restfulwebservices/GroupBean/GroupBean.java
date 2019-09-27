@@ -1,18 +1,16 @@
 package com.sept.rest.webservices.restfulwebservices.GroupBean;
 
 import com.sept.rest.webservices.restfulwebservices.UserBean.UserBean;
-import com.sept.rest.webservices.restfulwebservices.WallBean.WallBean;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
-import java.util.WeakHashMap;
 
 @Entity
-@Table(name = "group")
+@Table(name = "group_bean")
 public class GroupBean {
 	@Id
 	@GeneratedValue
@@ -25,17 +23,13 @@ public class GroupBean {
 	private String groupName;
 
 	@NotBlank
-	private ArrayList<Long> users;
-
-	@NotBlank
 	private Long wallId;
 
-	public GroupBean(Long id, String groupName, WallBean wallBean)
+	public GroupBean(Long id, String groupName, Long wallBean)
 	{
 		this.id = id;
-		this.users = new ArrayList<>();
 		this.groupName = groupName;
-		this.wallId = wallBean.getId();
+		this.wallId = wallBean;
 	}
 
 	public Long getId()
@@ -55,7 +49,7 @@ public class GroupBean {
 
 	public ArrayList<Long> getUsers()
 	{
-		return this.users;
+	    return null;
 	}
 
 	public Long getWallBean()
@@ -65,12 +59,12 @@ public class GroupBean {
 
 	public void addUser(UserBean user)
 	{
-		users.add(user.getId());
+
 	}
 
 	public void deleteUser(UserBean user)
 	{
-		users.remove(user.getId());
+
 	}
 
 
