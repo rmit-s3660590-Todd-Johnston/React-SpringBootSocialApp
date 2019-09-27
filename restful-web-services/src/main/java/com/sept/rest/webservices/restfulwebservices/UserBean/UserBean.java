@@ -1,6 +1,11 @@
 package com.sept.rest.webservices.restfulwebservices.UserBean;
+import com.sept.rest.webservices.restfulwebservices.ChatBean.ChatBean;
+import com.sept.rest.webservices.restfulwebservices.GroupBean.GroupBean;
+import com.sept.rest.webservices.restfulwebservices.WallBean.WallBean;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "userBean")
@@ -9,6 +14,8 @@ public class UserBean {
     @Id
     @GeneratedValue
     private Long id;
+    @NotBlank
+    private final String type = "u";
     @NotBlank
     private String user_name;
     @NotBlank
@@ -22,13 +29,12 @@ public class UserBean {
     @NotBlank
     private String[] subjects;
 
-<<<<<<< HEAD
-=======
+
     private ArrayList<Long> userChats;
     private ArrayList<Long> userGroups;
     private Long userWallID;
 
->>>>>>> BackendAPI's
+
 
     public UserBean() {
         super();
@@ -44,11 +50,19 @@ public class UserBean {
         this.isMentor = isMentor;
         this.subjects = new String[4];//uninitialised list of classes, to be done via addclass method after user creation
         //max classes/subjects
+        this.userChats = new ArrayList<>();
+        this.userGroups = new ArrayList<>();
+
 
     }
 
     public Long getId() {
         return id;
+    }
+
+    public String getType()
+    {
+        return type;
     }
 
     public void setId(Long id) {
@@ -134,8 +148,6 @@ public class UserBean {
     {
         this.subjects = subjects;
     }
-<<<<<<< HEAD
-=======
 
     public void addChat(ChatBean chat)
     {
@@ -175,5 +187,4 @@ public class UserBean {
     public ArrayList<Long> getUserGroups() {
         return userGroups;
     }
->>>>>>> BackendAPI's
 }

@@ -3,28 +3,27 @@ package com.sept.rest.webservices.restfulwebservices.UserBean;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200", allowedHeaders = "*")
+@CrossOrigin(origins="http://localhost:4200")
 public class UserBeanController {
     //This annotation is used to wire the bean classes automatically.
     @Autowired
     UserBeanRepository userBeanRepository;
-    UserBeanService service;
 
     // Get All Users
     @GetMapping("/users")
     public List<UserBean> getAllUsers() {
-        //create test users
-        userBeanRepository.save(new UserBean((long) 1, "testUser1", "Test1", "Jeffery", "password", false));
-        userBeanRepository.save(new UserBean((long) 2, "testUser2", "Test2", "Johnson", "password", false));
-        userBeanRepository.save(new UserBean((long) 3, "testMentor", "TestMentor1", "Mentor", "password", true));
-        userBeanRepository.save(new UserBean((long) 4, "testMentor2", "TestMentor2", "Mentor", "password", true));
-
         return userBeanRepository.findAll();
     }
 
@@ -39,11 +38,6 @@ public class UserBeanController {
     public UserBean getUserById(@PathVariable(value = "id") Long UserId){
         return userBeanRepository.findById(UserId).get();
         //it says incompatible types, because it uses Long? but if I put get() Method it works
-    }
-    //find by username
-    @GetMapping("/users/{user_name}")
-    public UserBean findByUserName(@RequestParam(value="user_name") String user_name){
-        return service.findByUsername(user_name);
     }
 
     //find by username

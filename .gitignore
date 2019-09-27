@@ -47,3 +47,6 @@ secrets.yml
 .gradletasknamecache
 .sts4-cache
 restful-web-services/restful-web-services.iml
+frontend/social-app/src/react-app-env.d.ts
+frontend/social-app/package-lock.json
+frontend/social-app/package-lock.json
