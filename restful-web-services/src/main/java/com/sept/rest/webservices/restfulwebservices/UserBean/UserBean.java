@@ -22,6 +22,13 @@ public class UserBean {
     @NotBlank
     private String[] subjects;
 
+<<<<<<< HEAD
+=======
+    private ArrayList<Long> userChats;
+    private ArrayList<Long> userGroups;
+    private Long userWallID;
+
+>>>>>>> BackendAPI's
 
     public UserBean() {
         super();
@@ -127,4 +134,46 @@ public class UserBean {
     {
         this.subjects = subjects;
     }
+<<<<<<< HEAD
+=======
+
+    public void addChat(ChatBean chat)
+    {
+        this.userChats.add(chat.getId());
+    }
+
+    public void deleteChat(ChatBean chat)
+    {
+        this.userChats.remove(chat.getId());
+    }
+
+    public void addGroup(GroupBean group)
+    {
+        this.userGroups.add(group.getId());
+    }
+
+    public void deleteGroup(GroupBean group)
+    {
+        this.userGroups.remove(group.getId());
+    }
+
+    public void setUserWall(WallBean wall)
+    {
+        this.userWallID = wall.getId();
+    }
+
+    public Long getUserWall()
+    {
+        return this.userWallID;
+    }
+
+    public ArrayList<Long> getUserChats()
+    {
+        return this.userChats;
+    }
+
+    public ArrayList<Long> getUserGroups() {
+        return userGroups;
+    }
+>>>>>>> BackendAPI's
 }

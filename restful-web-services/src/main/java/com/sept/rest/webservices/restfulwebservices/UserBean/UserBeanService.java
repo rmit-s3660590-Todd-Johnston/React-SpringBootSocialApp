@@ -1,6 +1,7 @@
 package com.sept.rest.webservices.restfulwebservices.UserBean;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
@@ -13,6 +14,21 @@ public class UserBeanService {
 
 	public List<UserBean> findAll() {
 		return UserBeans;
+	}
+
+	public UserBean findByUsername(String userName)
+	{
+		List<UserBean> users = userBeanRepository.findAll();
+		Iterator<UserBean> iterator = users.iterator();
+
+		while(iterator.hasNext())
+		{
+			if (iterator.next().getUser_name().compareTo(userName)==0)
+			{
+				return iterator.next();
+			}
+		}
+		return null;
 	}
 
 	public Optional<UserBean> findById(Long id)
