@@ -1,5 +1,6 @@
 package com.sept.rest.webservices.restfulwebservices;
 
+import com.sept.rest.webservices.restfulwebservices.ChatBean.ChatBeanRepository;
 import com.sept.rest.webservices.restfulwebservices.UserBean.UserBeanRepository;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +20,9 @@ public class ChatBeanControllerTest {
 
     @MockBean
     private UserBeanRepository mockRepository;
+    private ChatBeanRepository chatBeanRepository;
+
+    public void findById(){
+
+    }
 }

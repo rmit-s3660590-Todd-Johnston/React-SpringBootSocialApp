@@ -1,6 +1,7 @@
 package com.sept.rest.webservices.restfulwebservices;
 
 import com.sept.rest.webservices.restfulwebservices.UserBean.UserBeanRepository;
+import com.sept.rest.webservices.restfulwebservices.WallBean.WallBeanRepository;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -19,4 +20,9 @@ public class WallBeanControllerTest {
 
     @MockBean
     private UserBeanRepository mockRepository;
+    private WallBeanRepository wallBeanRepository;
+
+    public void findById(){
+
+    }
 }

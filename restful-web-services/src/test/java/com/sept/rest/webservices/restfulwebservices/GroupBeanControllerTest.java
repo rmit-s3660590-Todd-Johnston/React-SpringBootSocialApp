@@ -1,5 +1,6 @@
 package com.sept.rest.webservices.restfulwebservices;
 
+import com.sept.rest.webservices.restfulwebservices.GroupBean.GroupBeanRepository;
 import com.sept.rest.webservices.restfulwebservices.UserBean.UserBeanRepository;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,10 @@ public class GroupBeanControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
+    private GroupBeanRepository groupBeanRepository;
     private UserBeanRepository mockRepository;
+
+    public void findById(){
+
+    }
 }
