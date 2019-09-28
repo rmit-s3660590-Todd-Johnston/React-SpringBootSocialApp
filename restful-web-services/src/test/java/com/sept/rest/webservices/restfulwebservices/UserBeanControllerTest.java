@@ -1,7 +1,8 @@
 package com.sept.rest.webservices.restfulwebservices;
 
-import com.sept.rest.webservices.restfulwebservices.UserBean.UserBean;
+import com.sept.rest.webservices.restfulwebservices.UserBean.*;
 import com.sept.rest.webservices.restfulwebservices.UserBean.UserBeanRepository;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -28,7 +29,14 @@ public class UserBeanControllerTest {
     UserBean mockUser = new UserBean(1L, "Sherry1377", "Shahrzad", "Rafezi", "Password1234!", false);
 
     @Test
-    public void findById() throws Exception {
+    public void findById(){
         Mockito.when(mockRepository.findById(1L)).thenReturn(Optional.of(mockUser));
+    }
+
+    @Test
+    public void saveTest() {
+        UserBean mockUser1 = new UserBean(2L, "Todd1256", "Todd", "Johnston", "Password", true);
+        mockRepository.save(mockUser1);
+        Assert.assertNotNull(mockRepository.findById(2L));
     }
 }
