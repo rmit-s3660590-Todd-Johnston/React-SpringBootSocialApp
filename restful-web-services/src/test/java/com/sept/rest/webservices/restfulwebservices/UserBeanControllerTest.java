@@ -28,7 +28,7 @@ public class UserBeanControllerTest {
     UserBean mockUser = new UserBean(1L, "Sherry1377", "Shahrzad", "Rafezi", "Password1234!", false);
 
     @Test
-    public void getAllUsers() throws Exception {
+    public void findById() throws Exception {
         Mockito.when(mockRepository.findById(1L)).thenReturn(Optional.of(mockUser));
     }
 }
