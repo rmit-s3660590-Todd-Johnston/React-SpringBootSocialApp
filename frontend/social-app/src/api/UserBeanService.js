@@ -23,9 +23,9 @@ class UserBeanService {
         return axios.delete(`${API_URL}/users/${id}`);
     }
 
-    updateUserBean(name, id) {
-        //console.log('executed service')
-        //return axios.put(`${JPA_API_URL}/users/${id}`, userBean);
+    updateUserBean(id) {
+        console.log('executed updateUserBean')
+        return axios.put(`${API_URL}/users/${id}`);
     }
 
     createUserBean(id, user_name, name, last_name, password, isMentor) {
