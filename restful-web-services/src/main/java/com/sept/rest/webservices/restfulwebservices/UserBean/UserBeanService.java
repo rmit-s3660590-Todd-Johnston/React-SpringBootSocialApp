@@ -23,16 +23,15 @@ public class UserBeanService {
 	public UserBean findByUsername(String userName)
 	{
 		List<UserBean> users = userBeanRepository.findAll();
-		Iterator<UserBean> iterator = users.iterator();
 
-		//otherwise iterate through list
-		while(iterator.hasNext())
+		for(int i = 0; i < users.size();i++)
 		{
-			if (iterator.next().getUser_name().compareTo(userName)==0)
+			if (users.get(i).getUser_name().compareTo(userName)==0)
 			{
-				return iterator.next();
+				return(users.get(i));
 			}
 		}
+
 			return new UserBean((long) 666, "error", "error", "error", "password", false, "https://i.imagesup.co/images2/1f217b8b9e5e5d2bd63e9ff731157efda2e57468.jpg");
 	}
 
