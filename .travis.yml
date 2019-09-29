@@ -22,7 +22,7 @@ matrix:
         - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       deploy:
         provider: script
-        script: mvn -DskipTests appengine:deploy
+        script: gcloud -q app deploy app.yaml --promote
         on:
           branch: travis
     - language: node_js
