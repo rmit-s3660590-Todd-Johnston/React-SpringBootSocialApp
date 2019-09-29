@@ -22,7 +22,7 @@ public class UserBeanService {
 
 
 	public List<UserBean> findAll() {
-		return UserBeans;
+		return userBeanRepository.findAll();
 	}
 
 	public UserBean findByUsername(String userName)
