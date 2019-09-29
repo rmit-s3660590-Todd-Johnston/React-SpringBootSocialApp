@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom, {unmountComponentAtNode} from 'react-dom';
 import { act } from "react-dom/test-utils";
-import ProfileScreen from "../screens/ProfileScreen";
+import ProfileScreen from "../../screens/ProfileScreen";
 
 let container = null;
 beforeEach(() => {
@@ -21,5 +21,5 @@ it("Testing inserting Div into profile screen", () => {
     act(() => {
         ReactDom.render(<ProfileScreen/>, container);
     });
-    expect(container.textContent).toBe( "ProfileMarkMessage MeAdd Friend?About MeUserNameMarkTelephone9876543234CityCaliAddress Planet EarthMy SkillsBusiness ManDecision MakerDeal CloserOffer MakerMachine Learning");
+    expect(container.textContent).toBe( "ProfileName ErrorGo To WallMessage MeAdd to study groupAdd Friend?About MeNameMarkTelephone9876543234CityCaliAddress Planet EarthMy SkillsBusiness ManDecision MakerDeal CloserOffer MakerMachine Learning");
 });

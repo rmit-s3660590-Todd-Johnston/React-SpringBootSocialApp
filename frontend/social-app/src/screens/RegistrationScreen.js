@@ -91,7 +91,7 @@ class RegistrationScreen extends React.Component {
                                     },
                                 }
                             ],
-                        })(<Input/>)}
+                        })(<Input data-testid="email-input"/>)}
                     </Form.Item>
                     <Form.Item label="Password" hasFeedback>
                         {getFieldDecorator('password', {
@@ -127,7 +127,9 @@ class RegistrationScreen extends React.Component {
                         })(<Input/>)}
                     </Form.Item>
                     <Form.Item {...tailFormItemLayout}>
-                        <Button type="primary" htmlType="submit">
+                        <Button type="primary" htmlType="submit"
+                            data-testid="submit-button"
+                        >
                             Register
                         </Button>
                     </Form.Item>

@@ -17,6 +17,7 @@ const ChatScreen: React.FC<ChatScreenProps> = (props: ChatScreenProps) => {
 
     return <Layout>
         <Modal
+            data-testid="new-chat-modal"
             visible={newChatSearchVisible}
             onOk={() => {
                 form.validateFields((err, values) => {
@@ -81,6 +82,7 @@ const ChatScreen: React.FC<ChatScreenProps> = (props: ChatScreenProps) => {
                 style={{height: '100%', borderRight: 0}}
             >
                 <Menu.Item
+                    data-testid="new-chat-button"
                     key={'0'}
                 >
                     + New Chat

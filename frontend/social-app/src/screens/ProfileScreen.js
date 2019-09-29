@@ -35,7 +35,7 @@ export default class ProfileScreen extends Component {
     };
 
 
-    componentWillMount() {
+    componentDidMount() {
         this.getLoggedInUserData();
         if (this.state.firstName === "First"){
             this.setState({firstName: "Name"});
