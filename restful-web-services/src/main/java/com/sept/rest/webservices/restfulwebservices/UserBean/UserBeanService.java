@@ -34,6 +34,8 @@ public class UserBeanService {
 			userBeanRepository.save(new UserBean((long) 3, "testMentor", "TestMentor1", "Mentor", "password", true, "fakeurl"));
 			userBeanRepository.save(new UserBean((long) 4, "testMentor2", "TestMentor2", "Mentor", "password", true,"fakeurl1"));
 			init = true;
+			userBeanRepository.findById((long)2).get().addSubject("SampleSubject");
+			userBeanRepository.save(findById((long)2).get());
 		}
 		List<UserBean> users = userBeanRepository.findAll();
 
