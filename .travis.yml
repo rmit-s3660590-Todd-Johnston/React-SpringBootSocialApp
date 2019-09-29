@@ -23,7 +23,7 @@ matrix:
         - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       deploy:
         provider: script
-        script: gcloud -q app deploy app.yaml --promote
+        script: cd ./restful-web-services && gcloud -q app deploy app.yaml --promote
         skip_cleanup: true
         on:
           branch: travis
