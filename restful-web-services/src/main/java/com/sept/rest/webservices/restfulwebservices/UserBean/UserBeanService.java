@@ -17,7 +17,7 @@ public class UserBeanService {
 
 	private static List<UserBean> UserBeans = new ArrayList<>();
 	private static long idCounter = 0;
-	final static Logger logger = LoggerFactory.getLogger(UserBeanService.class);
+	private final static Logger logger = LoggerFactory.getLogger(UserBeanService.class);
 
 
 
@@ -43,7 +43,7 @@ public class UserBeanService {
 			}
 		}
 
-			return new UserBean((long) 666, "error", "error", "error", "password", false, "https://i.imagesup.co/images2/1f217b8b9e5e5d2bd63e9ff731157efda2e57468.jpg");
+			return new UserBean((long) 666, "error", "Coudln't find", "User", "password", false, "https://i.imagesup.co/images2/1f217b8b9e5e5d2bd63e9ff731157efda2e57468.jpg");
 	}
 
 	public List<UserBean> findAllUsers()
