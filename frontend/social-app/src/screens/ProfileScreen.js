@@ -1,9 +1,21 @@
 import React, {Component} from 'react';
-import {Avatar, Descriptions, Divider, Tooltip, Button, List, Card, Badge, Icon, Typography} from "antd";
-import {Layout} from "antd";
+import {
+    Avatar,
+    Descriptions,
+    Divider,
+    Tooltip,
+    Button,
+    Card,
+    Badge,
+    Icon,
+    Typography,
+    Layout,
+    Modal,
+    Input,
+    Form
+} from "antd";
 import AuthenticationService from "../AuthenticationService";
 import UserBeanService from "../api/UserBeanService";
-import update from 'react-addons-update';
 
 const gridStyle = {
     width: '25%',
@@ -21,9 +33,11 @@ export default class ProfileScreen extends Component {
             lastName: 'Last',
             profilePic: undefined,
             isMentor: false,
-            subjects: []
+            subjects: [],
+            modalVisible: false
         };
     };
+
 
 //     id: 666
 // ​
@@ -58,6 +72,7 @@ export default class ProfileScreen extends Component {
     };
 
     nullError(){
+        //subject array
         console.log("subject state: "+ this.state.subjects[0]);
         let i;
         for (i = 0; i < this.state.subjects.length-1; i++) {
@@ -65,21 +80,44 @@ export default class ProfileScreen extends Component {
                 this.state.subjects[i] = "error";
             }
         }
-       // this.setState({subjects: update(this.state.subjects, {1:{$set: "error"} })});
         console.log("subject state: "+ this.state.subjects[0]);
 
+        //mentor
         if (this.state.isMentor === undefined){
             this.setState({isMentor: true});
         }
-    }
+    };
 
+    showEditProfile = () =>{
+        this.setState({
+            modalVisible: true,
+        });
+    };
+
+    handleOk = e => {
+        console.log(e);
+        UserBeanService.updateUserBean(this.state.userID)
+            .then((res) => {
+                console.log("User: " + res.data.id + " updated!");
+            })
+            .catch(res => console.log(res));
+
+            this.setState({
+                modalVisible: false,
+            });
+            this.forceUpdate();
+    };
+
+    handleCancel = e => {
+        console.log(e);
+        this.setState({
+            modalVisible: false,
+        });
+    };
 
     componentWillMount() {
         this.getLoggedInUserData();
         this.nullError();
-    }
-
-    componentDidMount() {
     }
 
     render() {
@@ -87,7 +125,7 @@ export default class ProfileScreen extends Component {
             <Typography.Title>Profile</Typography.Title>
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh'}}>
                 <a href={"#"}>
-                    <Badge count={<Icon style={{marginBottom: '10px', color: 'gray'}} type={"edit"}/>}>
+                    <Badge count={<Icon style={{marginBottom: '10px', color: 'gray'}} type={"edit"} onClick={this.showEditProfile}/>} >
                         <Tooltip placement="right" title={"Hey! Don't touch my face human"}>
                             <Avatar src={this.state.profilePic}
                                     size={128} icon="user"/>
@@ -95,6 +133,20 @@ export default class ProfileScreen extends Component {
                     </Badge>
                 </a>
             </div>
+
+            <Modal
+                visible ={this.state.modalVisible}
+                title="Edit Profile Picture"
+                okText="Change"
+                onCancel={this.handleCancel}
+                onOk={this.handleOk}
+            >
+                <Form layout="vertical">
+                    <Form.Item label="Insert link to a picture below!">
+                        <Input/>
+                    </Form.Item>
+                </Form>
+            </Modal>
 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh'}}>
                 <h1>{this.state.firstName + " " + this.state.lastName}</h1>
