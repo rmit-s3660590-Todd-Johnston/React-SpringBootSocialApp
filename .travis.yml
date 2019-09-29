@@ -21,11 +21,11 @@ matrix:
       install:
         - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       deploy:
-        on:
-          branch: travis
-        provider: gae
-        keyfile: credentials.tar.gz
-        project: rmit-doughnuts
+        - provider: gae
+          on:
+            branch: travis
+          keyfile: credentials.tar.gz
+          project: rmit-doughnuts
 
     - language: node_js
       node_js: stable
@@ -45,3 +45,5 @@ after_failure:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
   - ./send.sh failure $WEBHOOK_URL
+before_deploy:
+  - ls -al
