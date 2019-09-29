@@ -24,7 +24,7 @@ matrix:
         - provider: gae
           on:
             branch: travis
-          keyfile: credentials.tar.gz
+          keyfile: client-secret.json
           project: rmit-doughnuts
 
     - language: node_js
