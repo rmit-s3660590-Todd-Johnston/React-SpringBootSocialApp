@@ -23,6 +23,8 @@ matrix:
       deploy:
         provider: script
         script: mvn -DskipTests appengine:deploy
+        on:
+          branch: travis
     - language: node_js
       node_js: stable
       before_install:
