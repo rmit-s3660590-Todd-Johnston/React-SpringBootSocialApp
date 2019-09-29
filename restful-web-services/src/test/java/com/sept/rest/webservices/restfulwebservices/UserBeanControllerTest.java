@@ -25,7 +25,7 @@ public class UserBeanControllerTest {
     @MockBean
     private UserBeanRepository mockRepository;
 
-    UserBean mockUser = new UserBean(1L, "Sherry1377", "Shahrzad", "Rafezi", "Password1234!", false);
+    UserBean mockUser = new UserBean(1L, "Sherry1377", "Shahrzad", "Rafezi", "Password1234!", false,"y");
 
     @Test
     public void findById(){
@@ -34,7 +34,7 @@ public class UserBeanControllerTest {
 
     @Test
     public void saveTest() {
-        UserBean mockUser1 = new UserBean(2L, "Todd1256", "Todd", "Johnston", "Password", true);
+        UserBean mockUser1 = new UserBean(2L, "Todd1256", "Todd", "Johnston", "Password", true,"hgh");
         mockRepository.save(mockUser1);
         Assert.assertNotNull(mockRepository.findById(mockUser1.getId()));
     }

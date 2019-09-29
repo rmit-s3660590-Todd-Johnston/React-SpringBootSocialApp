@@ -29,7 +29,7 @@ public class ChatBeanControllerTest {
     @MockBean
     private ChatBeanRepository chatBeanRepository;
 
-    UserBean mockUser = new UserBean(1L, "Sherry1377", "Shahrzad", "Rafezi", "Password1234!", false);
+    UserBean mockUser = new UserBean(1L, "Sherry1377", "Shahrzad", "Rafezi", "Password1234!", false,"gfg");
 
     @Test
     public void findById(){
