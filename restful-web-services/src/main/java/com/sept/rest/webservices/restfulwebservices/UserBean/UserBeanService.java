@@ -27,6 +27,7 @@ public class UserBeanService {
 
 	public UserBean findByUsername(String userName)
 	{
+
 		List<UserBean> users = userBeanRepository.findAll();
 
 		for(int i = 0; i < users.size();i++)
