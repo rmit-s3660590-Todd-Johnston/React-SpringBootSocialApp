@@ -20,6 +20,8 @@ matrix:
         - cd ./restful-web-services
       install:
         - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+      after_script:
+        - cd ..
       deploy:
           provider: gae
           keyfile: credentials.tar.gz
