@@ -33,7 +33,7 @@ public class UserBeanService {
 				return iterator.next();
 			}
 		}
-			return new UserBean((long) 666, "error", "error", "error", "password", false);
+			return new UserBean((long) 666, "error", "error", "error", "password", false, "https://pbs.twimg.com/media/Dfbui6uWAAAmSb-.jpg");
 	}
 
 	public Optional<UserBean> findById(Long id)
