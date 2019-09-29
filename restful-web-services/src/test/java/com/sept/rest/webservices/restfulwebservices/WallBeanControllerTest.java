@@ -1,8 +1,8 @@
 package com.sept.rest.webservices.restfulwebservices;
 
-import com.sept.rest.webservices.restfulwebservices.UserBean.UserBeanRepository;
-import com.sept.rest.webservices.restfulwebservices.WallBean.WallBean;
-import com.sept.rest.webservices.restfulwebservices.WallBean.WallBeanRepository;
+import com.sept.rest.webservices.restfulwebservices.UserBean.*;
+import com.sept.rest.webservices.restfulwebservices.WallBean.*;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -33,5 +33,11 @@ public class WallBeanControllerTest {
     @Test
     public void findById(){
         Mockito.when(wallBeanRepository.findById(1L)).thenReturn(Optional.of(mockWall));
+    }
+
+    @Test
+    public void saveTest(){
+        wallBeanRepository.save(mockWall);
+        Assert.assertNotNull(mockRepository.findById(mockWall.getId()));
     }
 }
