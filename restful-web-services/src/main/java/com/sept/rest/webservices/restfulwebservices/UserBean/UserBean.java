@@ -27,6 +27,8 @@ public class UserBean {
 
     private boolean isMentor;
 
+    private String profilePic;
+
     private String[] subjects;
 
 
@@ -40,7 +42,8 @@ public class UserBean {
         super();
     }
 
-    public UserBean(Long id, String user_name, String name, String last_name, String password, boolean isMentor){
+
+    public UserBean(Long id, String user_name, String name, String last_name, String password, boolean isMentor, String profilePic){
         super();
         this.id = id;
         this.user_name = user_name;
@@ -48,6 +51,7 @@ public class UserBean {
         this.last_name = last_name;
         this.password = password;
         this.isMentor = isMentor;
+        this.profilePic = profilePic;
         this.subjects = new String[4];//uninitialised list of classes, to be done via addclass method after user creation
         //max classes/subjects
         this.userChats = new ArrayList<>();
@@ -109,6 +113,14 @@ public class UserBean {
     public boolean getMentor()
     {
         return this.isMentor;
+    }
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
     }
 
     public String addSubject(String subject)

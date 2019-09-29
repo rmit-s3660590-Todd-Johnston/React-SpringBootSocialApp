@@ -33,7 +33,7 @@ public class UserBeanService {
 				return iterator.next();
 			}
 		}
-			return new UserBean((long) 666, "error", "error", "error", "password", false);
+			return new UserBean((long) 666, "error", "error", "error", "password", false, "https://i.imagesup.co/images2/1f217b8b9e5e5d2bd63e9ff731157efda2e57468.jpg");
 	}
 
 	public List<UserBean> findAllUsers()
