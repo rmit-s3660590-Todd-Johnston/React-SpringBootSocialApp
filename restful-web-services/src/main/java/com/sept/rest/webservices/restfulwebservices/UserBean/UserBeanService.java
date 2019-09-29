@@ -26,6 +26,9 @@ public class UserBeanService {
 
 		for(int i = 0; i < users.size();i++)
 		{
+			System.out.println("Name passed to method is:" + userName);
+			System.out.println("Name retrieved from repo is:" + users.get(0).getUser_name());
+
 			if (users.get(i).getUser_name().compareTo(userName)==0)
 			{
 				return(users.get(i));
