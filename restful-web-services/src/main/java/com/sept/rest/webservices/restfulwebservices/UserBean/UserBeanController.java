@@ -20,13 +20,6 @@ public class UserBeanController {
     // Get All Users
     @GetMapping("/users")
     public List<UserBean> getAllUsers() {
-
-        //create test users
-       // createUser(new UserBean((long) 1, "sept", "Test1", "Jeffery", "password", false, "https://pbs.twimg.com/media/Dfbui6uWAAAmSb-.jpg"));
-        //createUser(new UserBean((long) 2, "PeppaPig", "Peppa", "Pig", "password", false, "https://mediad.publicbroadcasting.net/p/shared/npr/styles/x_large/nprshared/201908/746995873.jpg"));
-        //userBeanRepository.save(new UserBean((long) 3, "testMentor", "TestMentor1", "Mentor", "password", true, "fakeurl"));
-        // userBeanRepository.save(new UserBean((long) 4, "testMentor2", "TestMentor2", "Mentor", "password", true,"fakeurl1"));
-
         return service.findAll();
     }
 
@@ -36,6 +29,15 @@ public class UserBeanController {
         return userBeanRepository.save(user);
     }
 
+    // for creating users on startup
+    @PostMapping("/users")
+    public void createUsersOnStartup(){
+        //create test users
+        createUser(new UserBean((long) 1, "sept", "Test1", "Jeffery", "password", false, "https://pbs.twimg.com/media/Dfbui6uWAAAmSb-.jpg"));
+        createUser(new UserBean((long) 2, "PeppaPig", "Peppa", "Pig", "password", false, "https://mediad.publicbroadcasting.net/p/shared/npr/styles/x_large/nprshared/201908/746995873.jpg"));
+        userBeanRepository.save(new UserBean((long) 3, "testMentor", "TestMentor1", "Mentor", "password", true, "fakeurl"));
+        userBeanRepository.save(new UserBean((long) 4, "testMentor2", "TestMentor2", "Mentor", "password", true,"fakeurl1"));
+    }
     // Get a Single user
     @RequestMapping("/users/{id}")
     public UserBean getUserById(@PathVariable(value = "id") Long UserId){
