@@ -17,6 +17,7 @@ matrix:
           fi
         - tar -xzf credentials.tar.gz
         - gcloud auth activate-service-account --key-file client-secret.json
+        - gcloud config set project rmit-doughnuts
         - cd ./restful-web-services
       install:
         - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
