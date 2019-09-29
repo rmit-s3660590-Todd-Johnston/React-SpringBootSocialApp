@@ -23,9 +23,11 @@ matrix:
       after_script:
         - cd ..
       deploy:
-          provider: gae
-          keyfile: credentials.tar.gz
-          project: rmit-doughnuts
+        on:
+          branch: travis
+        provider: gae
+        keyfile: credentials.tar.gz
+        project: rmit-doughnuts
 
     - language: node_js
       node_js: stable
