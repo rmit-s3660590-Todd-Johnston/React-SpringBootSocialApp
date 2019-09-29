@@ -13,7 +13,7 @@ import java.util.concurrent.Future;
 @Repository
 public interface UserBeanRepository extends JpaRepository<UserBean, Long> {
    // List<UserBean> findAllBy(Long id);
-	@Query("SELECT u.user_name FROM UserBean u where u.user_name = :wantedUser")
-	UserBean findByUserName(@Param("wantedUser")String wantedUser);
+//	@Query("SELECT u.user_name FROM UserBean u where u.user_name = :user_name")
+	//UserBean findByUserName(@Param("user_name")String user_name);
 
 }
