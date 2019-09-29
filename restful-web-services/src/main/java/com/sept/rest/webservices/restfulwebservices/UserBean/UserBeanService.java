@@ -36,6 +36,11 @@ public class UserBeanService {
 			return new UserBean((long) 666, "error", "error", "error", "password", false);
 	}
 
+	public List<UserBean> findAllUsers()
+	{
+		return userBeanRepository.findAll();
+	}
+
 	public Optional<UserBean> findById(Long id)
 	{
 		return userBeanRepository.findById(id);
