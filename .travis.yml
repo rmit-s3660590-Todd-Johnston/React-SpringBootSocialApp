@@ -25,10 +25,6 @@ matrix:
       script:
         - npm run build
 
-deploy:
-  provider: gae
-  keyfile: client
-  project: rmit-doughnuts
 
 after_success:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
