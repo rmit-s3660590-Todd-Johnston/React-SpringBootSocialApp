@@ -20,10 +20,10 @@ matrix:
         - gcloud config set project rmit-doughnuts
         - cd ./restful-web-services
       install:
-        - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+        - mvn install
       deploy:
         provider: script
-        script: cd ./restful-web-services && gcloud -q app deploy app.yaml --promote
+        script: gcloud -q app deploy app.yaml --promote
         skip_cleanup: true
         on:
           branch: travis
