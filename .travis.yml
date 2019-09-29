@@ -47,3 +47,5 @@ after_failure:
   - ./send.sh failure $WEBHOOK_URL
 before_deploy:
   - ls -al
+  - cd ..
+  - ls -al
