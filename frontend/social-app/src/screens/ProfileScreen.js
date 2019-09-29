@@ -15,6 +15,7 @@ export default class ProfileScreen extends Component {
     constructor(props){
         super(props);
         this.state = {
+            userID: undefined,
             userName: 'Temp Name',
             firstName: 'First',
             lastName: 'Last',
@@ -31,16 +32,11 @@ export default class ProfileScreen extends Component {
 //     mentor: false
 // ​
 //     name: "error"
-// ​
-//     password: "password"
-// ​
+// ​ ​
 //     profilePic: "https://short-biography.com/wp-content/uploads/mark-zuckerberg/Mark-Zuckerberg-300x300.jpg"
 // ​
 //     subjects: Array(4) [ null, null, null, … ]
-// ​
-//     userWall: null
-// ​
-//     user_name: "error"
+
 
     getLoggedInUserData = () => {
         console.log("Logged in user: " + AuthenticationService.getLoggedInUserName());
@@ -49,11 +45,12 @@ export default class ProfileScreen extends Component {
                      console.log(res.data);
                      console.log(res.data.subjects);
                      this.setState({
+                         userID: res.data.id,
                          userName: res.data.user_name,
                          firstName: res.data.name,
                          lastName: res.data.last_name,
                          profilePic: res.data.profilePic,
-                         isMentor: res.data.isMentor,
+                         isMentor: res.data.mentor,
                          subjects: res.data.subjects
                      });
                      })
@@ -62,10 +59,18 @@ export default class ProfileScreen extends Component {
 
     nullError(){
         console.log("subject state: "+ this.state.subjects[0]);
-        if (this.state.subjects[0] === undefined){}
-        this.state.subjects[0] = "error";
+        let i;
+        for (i = 0; i < this.state.subjects.length-1; i++) {
+            if (this.state.subjects[i] === undefined){
+                this.state.subjects[i] = "error";
+            }
+        }
        // this.setState({subjects: update(this.state.subjects, {1:{$set: "error"} })});
         console.log("subject state: "+ this.state.subjects[0]);
+
+        if (this.state.isMentor === undefined){
+            this.setState({isMentor: true});
+        }
     }
 
 
@@ -75,9 +80,6 @@ export default class ProfileScreen extends Component {
     }
 
     componentDidMount() {
-    }
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        this.nullError();
     }
 
     render() {
@@ -121,17 +123,15 @@ export default class ProfileScreen extends Component {
             <Descriptions>
                 <Descriptions.Item label="First Name">{this.state.firstName}</Descriptions.Item>
                 <Descriptions.Item label="Last Name">{this.state.lastName}</Descriptions.Item>
-                <Descriptions.Item label="City">Cali</Descriptions.Item>
-                <Descriptions.Item label="Address"> Planet Earth
-                </Descriptions.Item>
+                <Descriptions.Item label="Mentor status">{this.state.isMentor.toString()}</Descriptions.Item>
+                <Descriptions.Item label="User ID: "> {this.state.userID}</Descriptions.Item>
             </Descriptions>
 
             <Divider style={{color: 'black', font: 'bold', marginTop: '30px'}}>My Skills</Divider>
             <Card.Grid style={gridStyle}>{this.state.subjects[0]}</Card.Grid>
-            <Card.Grid style={gridStyle}>Decision Maker</Card.Grid>
-            <Card.Grid style={gridStyle}>Deal Closer</Card.Grid>
-            <Card.Grid style={gridStyle}>Offer Maker</Card.Grid>
-            <Card.Grid style={gridStyle}>Machine Learning</Card.Grid>
+            <Card.Grid style={gridStyle}>{this.state.subjects[1]}</Card.Grid>
+            <Card.Grid style={gridStyle}>{this.state.subjects[2]}</Card.Grid>
+            <Card.Grid style={gridStyle}>{this.state.subjects[3]}</Card.Grid>
         </Layout.Content>
     }
 }
