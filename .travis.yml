@@ -24,6 +24,7 @@ matrix:
       deploy:
         provider: script
         script: gcloud -q app deploy app.yaml --promote
+        skip_cleanup: true
         on:
           branch: travis
     - language: node_js
