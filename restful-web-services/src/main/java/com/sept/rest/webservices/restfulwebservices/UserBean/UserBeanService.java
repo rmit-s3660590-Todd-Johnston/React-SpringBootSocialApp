@@ -36,6 +36,11 @@ public class UserBeanService {
 			return new UserBean((long) 666, "error", "error", "error", "password", false, "https://pbs.twimg.com/media/Dfbui6uWAAAmSb-.jpg");
 	}
 
+	public List<UserBean> findAllUsers()
+	{
+		return userBeanRepository.findAll();
+	}
+
 	public Optional<UserBean> findById(Long id)
 	{
 		return userBeanRepository.findById(id);
