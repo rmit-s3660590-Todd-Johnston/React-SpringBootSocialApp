@@ -84,7 +84,6 @@
                 <artifactId>appengine-maven-plugin</artifactId>
                 <version>1.9.21</version>
             </plugin>
-        </plugin>
     </plugins>
 </build>
 
