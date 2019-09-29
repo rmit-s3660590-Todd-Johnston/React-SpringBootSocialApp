@@ -21,7 +21,7 @@ matrix:
       install:
         - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       deploy:
-        - provider: script
+        provider: script
         script: mvn -DskipTests appengine:deploy
     - language: node_js
       node_js: stable
