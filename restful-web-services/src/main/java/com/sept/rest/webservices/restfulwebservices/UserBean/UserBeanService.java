@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
@@ -15,6 +17,9 @@ public class UserBeanService {
 
 	private static List<UserBean> UserBeans = new ArrayList<>();
 	private static long idCounter = 0;
+	final static Logger logger = LoggerFactory.getLogger(UserBeanService.class);
+
+
 
 	public List<UserBean> findAll() {
 		return UserBeans;
@@ -26,8 +31,11 @@ public class UserBeanService {
 
 		for(int i = 0; i < users.size();i++)
 		{
-			System.out.println("Name passed to method is:" + userName);
-			System.out.println("Name retrieved from repo is:" + users.get(0).getUser_name());
+			logger.debug("Name passed to method is: + userName");
+			logger.debug("Name retrieved from repo is:" + users.get(0).getUser_name());
+
+			//System.out.println("Name passed to method is:" + userName);
+			//System.out.println("Name retrieved from repo is:" + users.get(0).getUser_name());
 
 			if (users.get(i).getUser_name().compareTo(userName)==0)
 			{
