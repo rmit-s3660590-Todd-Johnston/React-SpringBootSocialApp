@@ -26,9 +26,9 @@ public class UserBean {
     private String password;
 
     private boolean isMentor;
-    @NotBlank
+
     private String profilePic;
-    @NotBlank
+
     private String[] subjects;
 
 
