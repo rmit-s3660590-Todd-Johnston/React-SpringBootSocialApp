@@ -21,12 +21,6 @@ matrix:
         - cd ./restful-web-services
       install:
         - mvn install
-      deploy:
-        provider: script
-        script: gcloud -q app deploy app.yaml --promote
-        skip_cleanup: true
-        on:
-          branch: travis
     - language: node_js
       node_js: stable
       before_install:
@@ -36,6 +30,13 @@ matrix:
       script:
         - npm run build
 
+
+deploy:
+  provider: script
+  script: gcloud -q app deploy app.yaml --promote
+  skip_cleanup: true
+  on:
+    branch: travis
 
 after_success:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
