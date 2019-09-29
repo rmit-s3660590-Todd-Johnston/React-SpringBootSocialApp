@@ -14,19 +14,19 @@ public class UserBean {
     @Id
     @GeneratedValue
     private Long id;
-    @NotBlank
+
     private final String type = "u";
-    @NotBlank
+
     private String user_name;
-    @NotBlank
+
     private String name;
-    @NotBlank
+
     private String last_name;
-    @NotBlank
+
     private String password;
-    @NotBlank
+
     private boolean isMentor;
-    @NotBlank
+
     private String[] subjects;
 
 
