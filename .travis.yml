@@ -26,8 +26,9 @@ before_script:
   - npm install
 script:
   - npm run build
+  - cd ../../
   - gcloud -q app deploy app.yaml
-  - cd ../../restul-web-services
+  - cd restul-web-services
   - mvn appengine:deploy
 
 after_success:
