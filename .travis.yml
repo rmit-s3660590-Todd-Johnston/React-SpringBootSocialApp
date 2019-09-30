@@ -24,7 +24,7 @@ script:
   - npm run build
   - ls -al
   - pwd
-  - gcloud -q app deploy ../../app.yaml
+  - gcloud -q app deploy app.yaml
   - ls -al
   - pwd
   - cd ../../restful-web-services
