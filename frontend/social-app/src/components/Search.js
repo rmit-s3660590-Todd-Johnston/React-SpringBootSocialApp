@@ -9,58 +9,9 @@ export default class Search extends Component {
 
         this.state = {
             users: [],
-            value: undefined,
-            isFocus: false,
-            isClearing: false,
         };
     }
 
-    handleFocus = (e) => {
-        if (!this.state.isClearing) {
-            this.setState({isFocus: true});
-            const onFocus = this.props.onFocus;
-            if (onFocus) {
-                onFocus(e);
-            }
-        }
-    };
-
-    handleInputChange = () => {
-        this.setState({
-            value: this.search.value
-        }, () => {
-            if (this.state.value.length > 1) {
-                this.getData();
-            }
-        })
-    };
-
-    handleMouseDown = () => {
-        this.setState({isClearing: true});
-    };
-
-    handleMouseLeave = () => {
-        this.Input.refs.input.focus();
-        this.setState({isClearing: false});
-    };
-
-    handleClick = () => {
-        this.setState({value: ''}, () => {
-            const onChange = this.props.onChange;
-            if (onChange) {
-                onChange('');
-            }
-            this.Input.refs.input.focus();
-            this.setState({isClearing: false});
-        });
-    };
-
-    handlePressEnter = () => {
-        const onSearch = this.props.onSearch;
-        if (onSearch) {
-            onSearch(this.state.value);
-        }
-    };
 
     searchArray = (input) => {
         var i;
