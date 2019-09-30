@@ -23,7 +23,7 @@ public class ChatBean {
     @NotBlank
     private ArrayList<Long> messageIDs;
 
-    ChatBean(Long id, ArrayList<Long> users) {
+    public ChatBean(Long id, ArrayList<Long> users) {
         this.id = id;
         this.userIDs = users;
     }
