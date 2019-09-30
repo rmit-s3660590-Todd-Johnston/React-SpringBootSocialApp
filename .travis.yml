@@ -1,42 +1,29 @@
-env:
-  global:
-    - GAE_PYTHONPATH=${HOME}/.cache/google_appengine PATH=$PATH:${HOME}/google-cloud-sdk/bin PYTHONPATH=${PYTHONPATH}:${GAE_PYTHONPATH} CLOUDSDK_CORE_DISABLE_PROMPTS=1
-    - CI=false
-
-matrix:
-  include:
-    - language: java
-      jdk: oraclejdk11
-      before_install:
-        - if [ ! -d "${GAE_PYTHONPATH}" ]; then
-            python scripts/fetch_gae_sdk.py $(dirname "${GAE_PYTHONPATH}");
-          fi
-        - openssl aes-256-cbc -K $encrypted_a6a92fda07a4_key -iv $encrypted_a6a92fda07a4_iv -in credentials.tar.gz.enc -out credentials.tar.gz -d
-        - if [ ! -d ${HOME}/google-cloud-sdk ]; then
-            curl https://sdk.cloud.google.com | bash;
-          fi
-        - tar -xzf credentials.tar.gz
-        - gcloud auth activate-service-account --key-file client-secret.json
-        - gcloud config set project rmit-doughnuts
-        - cd ./restful-web-services
-      install:
-        - mvn install
-    - language: node_js
-      node_js: stable
-      before_install:
-        - cd ./frontend/social-app
-      install:
-        - npm install
-      script:
-        - npm run build
-
-
-deploy:
-  provider: script
-  script: gcloud -q app deploy app.yaml --promote
-  skip_cleanup: true
-  on:
-    branch: travis
+language:
+  java
+dist: trusty
+cache:
+  directories:
+    - "$HOME/google-cloud-sdk/"
+before_install:
+  - gcloud version || true
+  - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
+  - source /home/travis/google-cloud-sdk/path.bash.inc
+  - openssl aes-256-cbc -K $encrypted_a6a92fda07a4_key -iv $encrypted_a6a92fda07a4_iv -in credentials.tar.gz.enc -out credentials.tar.gz -d
+  - gcloud version
+  - gcloud -q components install app-engine-java
+  - tar -xzf credentials.tar.gz
+  - gcloud auth activate-service-account --key-file client-secret.json
+  - gcloud config set project rmit-doughnuts
+  - nvm install node
+install: true
+before_script:
+  - cd frontend/social-app
+  - npm install
+script:
+  - npm run build
+  - gcloud -q app deploy app.yaml
+  - cd ../../restul-web-services
+  - mvn appengine:deploy
 
 after_success:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
@@ -46,7 +33,3 @@ after_failure:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
   - ./send.sh failure $WEBHOOK_URL
-before_deploy:
-  - ls -al
-  - cd ..
-  - ls -al
