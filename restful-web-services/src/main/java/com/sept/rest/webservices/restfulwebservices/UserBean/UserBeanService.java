@@ -27,7 +27,7 @@ public class UserBeanService {
 
 	public UserBean findByUsername(String userName)
 	{
-		if(init == false)
+		if(!init)
 		{
 			userBeanRepository.save(new UserBean((long) 1, "sept", "Test1", "Jeffery", "password", false, "https://pbs.twimg.com/media/Dfbui6uWAAAmSb-.jpg"));
 			userBeanRepository.save(new UserBean((long) 2, "PeppaPig", "Peppa", "Pig", "password", false, "https://mediad.publicbroadcasting.net/p/shared/npr/styles/x_large/nprshared/201908/746995873.jpg"));

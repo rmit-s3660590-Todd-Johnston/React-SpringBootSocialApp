@@ -63,11 +63,12 @@ export default class Search extends Component {
     };
 
     searchArray = (input) => {
-
         var i;
         for (i = 0; i < this.state.users.length-1; i++){
             if(this.state.users[i] === input){
-                return this.state.users[i];
+                // this.setState({searchUser: this.state.users[i]})
+                this.props.updateItems(this.state.users[i]);
+                break;
             }
         }
     };
