@@ -27,7 +27,7 @@ script:
   - gcloud -q app deploy ../../app.yaml
   - ls -al
   - pwd
-  - cd ../../restul-web-services
+  - cd ../../restful-web-services
   - mvn appengine:deploy
 
 after_success:
