@@ -64,6 +64,7 @@ public class UserBeanController {
         user.setPassword(userDetails.getPassword());
         user.setMentor(userDetails.getMentor());
         user.setSubjects(userDetails.getSubjects());
+        user.setProfilePic(userDetails.getProfilePic());
 
         UserBean updatedUser = userBeanRepository.save(user);
 
