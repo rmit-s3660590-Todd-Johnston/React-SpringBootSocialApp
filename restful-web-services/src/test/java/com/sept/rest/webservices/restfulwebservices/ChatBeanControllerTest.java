@@ -50,7 +50,7 @@ public class ChatBeanControllerTest {
     void checkNotNull() {
         assertThat(mockRepository).isNotNull();
         assertThat(chatRepository).isNotNull();
-        assertThat(chatRepository.findById((long)1).get()).isNotNull();
+        assertThat(chatRepository.findById(1L).get()).isNotNull();
     }
 
     @Test
