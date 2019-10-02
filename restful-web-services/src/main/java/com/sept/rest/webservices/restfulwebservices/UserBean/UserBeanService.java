@@ -30,13 +30,17 @@ public class UserBeanService {
 	public UserBean findByUsername(String userName)
 	{
 		UserBean data;
+		//UserBean user2 = new UserBean((long) 2, "USE@", "ITSUSER2", "PLSWORK", "password", false, "https://i.imagesup.co/images2/1f217b8b9e5e5d2bd63e9ff731157efda2e57468.jpg");
 		if(init == false)
 		{
 			init = true;
 		}
+		//controller.createUser(user2);
 		data = userBeanRepository.findById(1L).get();
 		List<UserBean> users = userBeanRepository.findAll();
 
+		return userBeanRepository.findById(2L).get();
+		/*
 		for(int i = 0; i < users.size();i++)
 		{
 			if (users.get(i).getUser_name().compareTo(userName)==0)
@@ -46,6 +50,7 @@ public class UserBeanService {
 		}
 
 			return new UserBean((long) 666, "error", "Coudln't find", "User", "password", false, "https://i.imagesup.co/images2/1f217b8b9e5e5d2bd63e9ff731157efda2e57468.jpg");
+			*/
 	}
 
 	public List<UserBean> findAllUsers()
