@@ -14,6 +14,8 @@ import java.util.Optional;
 public class UserBeanService {
 	@Autowired
 	UserBeanRepository userBeanRepository;
+	@Autowired
+	UserBeanController controller;
 
 	private static List<UserBean> UserBeans = new ArrayList<>();
 	private static long idCounter = 0;
@@ -27,26 +29,16 @@ public class UserBeanService {
 
 	public UserBean findByUsername(String userName)
 	{
+		UserBean data;
 		if(init == false)
 		{
-			userBeanRepository.save(new UserBean((long) 1, "sept", "Test1", "Jeffery", "password", false, "https://pbs.twimg.com/media/Dfbui6uWAAAmSb-.jpg"));
-			userBeanRepository.save(new UserBean((long) 2, "PeppaPig", "Peppa", "Pig", "password", false, "https://mediad.publicbroadcasting.net/p/shared/npr/styles/x_large/nprshared/201908/746995873.jpg"));
-			userBeanRepository.save(new UserBean((long) 3, "testMentor", "TestMentor1", "Mentor", "password", true, "fakeurl"));
-			userBeanRepository.save(new UserBean((long) 4, "testMentor2", "TestMentor2", "Mentor", "password", true,"fakeurl1"));
 			init = true;
-			userBeanRepository.findById((long)2).get().addSubject("SampleSubject");
-			userBeanRepository.save(findById((long)2).get());
 		}
+		data = userBeanRepository.findById(1L).get();
 		List<UserBean> users = userBeanRepository.findAll();
 
 		for(int i = 0; i < users.size();i++)
 		{
-			logger.debug("Name passed to method is: + userName");
-			logger.debug("Name retrieved from repo is:" + users.get(0).getUser_name());
-
-			//System.out.println("Name passed to method is:" + userName);
-			//System.out.println("Name retrieved from repo is:" + users.get(0).getUser_name());
-
 			if (users.get(i).getUser_name().compareTo(userName)==0)
 			{
 				return(users.get(i));
