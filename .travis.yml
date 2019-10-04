@@ -27,13 +27,7 @@ before_script:
   - cd frontend/social-app
   - npm install
 script:
-  - npm run build
-  - cd ../../
-  - docker build -t tomato150/doughnuts/frontend ./frontend/social-app
-  - docker build -t tomato150/doughnuts/restful ./restful-web-services
-  - kubectl create ns todos
-  - gkubectl apply -f jobs/backend/pipeline/backend.yml
-  - kubectl apply -f jobs/backend/pipeline/service.yml
+  - kubectl --version
 
 after_success:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
