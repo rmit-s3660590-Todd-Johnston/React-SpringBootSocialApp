@@ -31,7 +31,9 @@ script:
   - cd ../../
   - docker build -t tomato150/doughnuts/frontend ./frontend/social-app
   - docker build -t tomato150/doughnuts/restful ./restful-web-services
-  - kubectl create deployment doughnuts --image tomato150/social-app
+  - kubectl create ns todos
+  - gkubectl apply -f jobs/backend/pipeline/backend.yml
+  - kubectl apply -f jobs/backend/pipeline/service.yml
 
 after_success:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
