@@ -94,12 +94,11 @@ export default class ProfileScreen extends Component {
     };
 
     handleOk = e => {
-        let user = {
-            id: this.state.userID,
+        let newProfilePicture = {
             profiePic: this.state.editProfileText
         };
         console.log(e);
-        UserBeanService.updateUserBean(this.state.userID , user)
+        UserBeanService.updateUserBean(this.state.userID , newProfilePicture)
             .then((res) => {
                 console.log("User: " + res.data.id + " updated!");
             })
@@ -123,7 +122,7 @@ export default class ProfileScreen extends Component {
         this.setState({editProfileText: e.target.value})
     };
 
-    componentDidMount() {
+    componentWillMount() {
         this.getLoggedInUserData();
         this.nullError();
     }
@@ -138,7 +137,7 @@ export default class ProfileScreen extends Component {
                 </Badge>
             </div>
 
-            <Modal
+            <Modal data-testid="test-modal"
                 visible ={this.state.modalVisible}
                 title="Edit Profile Picture"
                 okText="Change"
@@ -150,7 +149,7 @@ export default class ProfileScreen extends Component {
             </Modal>
 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh'}}>
-                <h1>{this.state.firstName + " " + this.state.lastName}</h1>
+                <h1 data-testid="test-name" >{this.state.firstName + " " + this.state.lastName}</h1>
             </div>
 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>

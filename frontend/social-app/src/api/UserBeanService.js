@@ -23,8 +23,12 @@ class UserBeanService {
         return axios.delete(`${API_URL}/users/${id}`);
     }
 
+    updateProfilePic(id,user){
+        return axios.put(`${API_URL}/users/${id}`);
+    }
+
     updateUserBean(id) {
-        console.log('executed updateUserBean')
+        console.log('executed updateUserBean');
         return axios.put(`${API_URL}/users/${id}`);
     }
 
