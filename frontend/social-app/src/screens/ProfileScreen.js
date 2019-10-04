@@ -3,7 +3,6 @@ import {
     Avatar,
     Descriptions,
     Divider,
-    Tooltip,
     Button,
     Card,
     Badge,
@@ -12,7 +11,6 @@ import {
     Layout,
     Modal,
     Input,
-    Form
 } from "antd";
 import AuthenticationService from "../AuthenticationService";
 import UserBeanService from "../api/UserBeanService";
@@ -34,7 +32,8 @@ export default class ProfileScreen extends Component {
             profilePic: undefined,
             isMentor: false,
             subjects: [],
-            modalVisible: false
+            modalVisible: false,
+            editProfileText: ''
         };
     };
 
@@ -54,21 +53,21 @@ export default class ProfileScreen extends Component {
 
     getLoggedInUserData = () => {
         console.log("Logged in user: " + AuthenticationService.getLoggedInUserName());
-             UserBeanService.retrieveUserBeanByUserName(AuthenticationService.getLoggedInUserName())
-                 .then((res) => {
-                     console.log(res.data);
-                     console.log(res.data.subjects);
-                     this.setState({
-                         userID: res.data.id,
-                         userName: res.data.user_name,
-                         firstName: res.data.name,
-                         lastName: res.data.last_name,
-                         profilePic: res.data.profilePic,
-                         isMentor: res.data.mentor,
-                         subjects: res.data.subjects
-                     });
-                     })
-                 .catch(err => console.error(err));
+        UserBeanService.retrieveUserBeanByUserName(AuthenticationService.getLoggedInUserName())
+            .then((res) => {
+                console.log(res.data);
+                console.log(res.data.subjects);
+                this.setState({
+                    userID: res.data.id,
+                    userName: res.data.user_name,
+                    firstName: res.data.name,
+                    lastName: res.data.last_name,
+                    profilePic: res.data.profilePic,
+                    isMentor: res.data.mentor,
+                    subjects: res.data.subjects
+                });
+            })
+            .catch(err => console.error(err));
     };
 
     nullError(){
@@ -95,17 +94,21 @@ export default class ProfileScreen extends Component {
     };
 
     handleOk = e => {
+        let user = {
+            id: this.state.userID,
+            profiePic: this.state.editProfileText
+        };
         console.log(e);
-        UserBeanService.updateUserBean(this.state.userID)
+        UserBeanService.updateUserBean(this.state.userID , user)
             .then((res) => {
                 console.log("User: " + res.data.id + " updated!");
             })
             .catch(res => console.log(res));
 
-            this.setState({
-                modalVisible: false,
-            });
-            this.forceUpdate();
+        this.setState({
+            modalVisible: false,
+        });
+        this.forceUpdate();
     };
 
     handleCancel = e => {
@@ -113,6 +116,11 @@ export default class ProfileScreen extends Component {
         this.setState({
             modalVisible: false,
         });
+    };
+
+    handleValueChange = value => {
+        console.log(value.target.value);
+        this.setState({editProfileText: value.target.value})
     };
 
     componentDidMount() {
@@ -124,14 +132,10 @@ export default class ProfileScreen extends Component {
         return <Layout.Content style={{backgroundColor: "#FFFFFF", margin: 13, padding: 13}}>
             <Typography.Title>Profile</Typography.Title>
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh'}}>
-                <a href={"#"}>
-                    <Badge count={<Icon style={{marginBottom: '10px', color: 'gray'}} type={"edit"} onClick={this.showEditProfile}/>} >
-                        <Tooltip placement="right" title={"Hey! Don't touch my face human"}>
-                            <Avatar src={this.state.profilePic}
-                                    size={128} icon="user"/>
-                        </Tooltip>
-                    </Badge>
-                </a>
+                <Badge count={<Icon style={{marginBottom: '10px', color: 'gray'}} type={"edit"} onClick={this.showEditProfile}/>} >
+                    <Avatar src={this.state.profilePic}
+                            size={128} icon="user"/>
+                </Badge>
             </div>
 
             <Modal
@@ -141,11 +145,8 @@ export default class ProfileScreen extends Component {
                 onCancel={this.handleCancel}
                 onOk={this.handleOk}
             >
-                <Form layout="vertical">
-                    <Form.Item label="Insert link to a picture below!">
-                        <Input/>
-                    </Form.Item>
-                </Form>
+                <Input placeholder={"Input link here: "} onChange={value => this.handleValueChange(value)}/>
+
             </Modal>
 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh'}}>
@@ -154,17 +155,17 @@ export default class ProfileScreen extends Component {
 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <Button style={{marginRight: 60}} size={'large'}
-                    onClick={() => {this.props.history.push('/wall')}}
+                        onClick={() => {this.props.history.push('/wall')}}
                 >
                     Go To Wall
                 </Button>
                 <Button style={{marginRight: 60}} type='primary' size={'large'}
-                    onClick={() => this.props.history.push('/chat')}
+                        onClick={() => this.props.history.push('/chat')}
                 >
                     Message Me
                 </Button>
                 <Button style={{marginRight: 60}} type='primary' size={'large'}
-                    onClick={() => this.props.history.push('/study-group')}
+                        onClick={() => this.props.history.push('/study-group')}
                 >
                     Add to study group
                 </Button>
