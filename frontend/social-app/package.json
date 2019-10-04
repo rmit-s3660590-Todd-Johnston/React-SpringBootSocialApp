@@ -18,7 +18,8 @@
     "react-addons-update": "^15.6.2",
     "react-dom": "^16.8.4",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "react-test-renderer": "^16.10.1"
   },
   "eslintConfig": {
     "extends": "react-app"
