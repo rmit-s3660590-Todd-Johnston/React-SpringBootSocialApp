@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  containers:
+    - name: master
+      image: gcr.io/rmit-doughnuts/b:latest
+      ports:
+      - containerPort: 8080
