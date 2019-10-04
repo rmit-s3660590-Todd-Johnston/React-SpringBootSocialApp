@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Pod
 metadata:
-  name: backend
+  name: frontend
   namespace: todos
 spec:
   replicas: 1
@@ -12,7 +12,6 @@ spec:
     spec:
       containers:
       - name: master
-        image: YOURDOCKERLOGINHERE/simple-app/simple-backend:latest
+        image: YOURDOCKERLOGINHERE/simple-app/simple-frontend:latest
         ports:
-        - containerPort: 3001
-
+        - containerPort: 80
