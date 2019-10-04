@@ -30,6 +30,7 @@ matrix:
         - gcloud components install kubectl
         - gcloud auth configure-docker
         - docker build -t gcr.io/rmit-doughnuts/b ./restful-web-services
+        - pwd
         - kubectl apply -f ./restful-web-services/backend.yml
         - kubectl apply -f ./restful-web-services/service.yml
 
