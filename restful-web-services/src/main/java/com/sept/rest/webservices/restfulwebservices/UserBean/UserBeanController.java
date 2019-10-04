@@ -53,9 +53,9 @@ public class UserBeanController {
 
     // Update a user
     @PutMapping("/users/{id}")
-    public UserBean updateUser(@PathVariable(value = "id") Long UserId, @Valid @RequestBody UserBean userDetails){
+    public UserBean updateUser(@PathVariable(value = "id") Long userId, @Valid @RequestBody UserBean userDetails){
 
-        UserBean user = userBeanRepository.findById(UserId).get();
+        UserBean user = userBeanRepository.findById(userId).get();
         //it says incompatible types, because it uses Long? but if I put get() Method it works
 
         user.setUser_name(userDetails.getUser_name());
@@ -69,6 +69,15 @@ public class UserBeanController {
         UserBean updatedUser = userBeanRepository.save(user);
 
         return updatedUser;
+    }
+
+    //update a profile pic
+    @PutMapping("/users/{id}")
+    public UserBean updateProfilePic(@PathVariable(value = "id")Long userId, String profilePic)
+    {
+       UserBean user = userBeanRepository.findById(userId).get();
+       user.setProfilePic(profilePic);
+       return userBeanRepository.save(user);
     }
 
     // Delete a user
