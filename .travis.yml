@@ -25,8 +25,8 @@ matrix:
         - gcloud version
         - tar -xzf credentials.tar.gz
         - gcloud auth activate-service-account --key-file client-secret.json
-        - gcloud components install kubectl
         - gcloud config set project rmit-doughnuts
+        - gcloud components install kubectl
         - gcloud container clusters get-credentials doughnuts
         - gcloud auth configure-docker
         - docker build -t gcr.io/rmit-doughnuts/b:$TRAVIS_BUILD_ID ./restful-web-services
