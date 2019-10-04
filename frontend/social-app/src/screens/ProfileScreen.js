@@ -29,7 +29,7 @@ export default class ProfileScreen extends Component {
             userName: 'Temp Name',
             firstName: 'First',
             lastName: 'Last',
-            profilePic: undefined,
+            profilePic: '',
             isMentor: false,
             subjects: [],
             modalVisible: false,
@@ -159,12 +159,12 @@ export default class ProfileScreen extends Component {
                 >
                     Go To Wall
                 </Button>
-                <Button style={{marginRight: 60}} type='primary' size={'large'}
+                <Button data-testid="test-message" style={{marginRight: 60}} type='primary' size={'large'}
                         onClick={() => this.props.history.push('/chat')}
                 >
                     Message Me
                 </Button>
-                <Button style={{marginRight: 60}} type='primary' size={'large'}
+                <Button data-testid="test-study" style={{marginRight: 60}} type='primary' size={'large'}
                         onClick={() => this.props.history.push('/study-group')}
                 >
                     Add to study group
@@ -174,7 +174,7 @@ export default class ProfileScreen extends Component {
 
             <Divider style={{color: 'black', font: 'bold', marginTop: '30px'}}>About Me</Divider>
             <Descriptions>
-                <Descriptions.Item label="First Name">{this.state.firstName}</Descriptions.Item>
+                <Descriptions.Item data-testid="test-fname" label="First Name">{this.state.firstName}</Descriptions.Item>
                 <Descriptions.Item label="Last Name">{this.state.lastName}</Descriptions.Item>
                 <Descriptions.Item label="Mentor status">{this.state.isMentor.toString()}</Descriptions.Item>
                 <Descriptions.Item label="User ID: "> {this.state.userID}</Descriptions.Item>

@@ -4,7 +4,8 @@ import ReactDOM, {unmountComponentAtNode} from 'react-dom';
 import {act, mockComponent} from "react-dom/test-utils";
 import ProfileScreen from "../../screens/ProfileScreen";
 import {shallow, mount} from 'enzyme';
-import Badge from "../../screens/ProfileScreen";
+import MockAdapter from 'axios-mock-adapter';
+import axios from 'axios';
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -12,15 +13,6 @@ it('renders without crashing', () => {
     ReactDOM.render(<ProfileScreen/>,div) ;
     ReactDOM.unmountComponentAtNode(div);
 });
-
-
-// it("Testing inserting Div into profile screen", () => {
-//     act(() => {
-//         ReactDom.render(<ProfileScreen/>, container);
-//     });
-//     expect(container.textContent).toBe( "ProfileName ErrorGo To WallMessage MeAdd to study groupAdd Friend?About MeNameMarkTelephone9876543234CityCaliAddress Planet EarthMy SkillsBusiness ManDecision MakerDeal CloserOffer MakerMachine Learning");
-// });
-
 
 
 test('edit profile not shown', () => {
@@ -36,14 +28,6 @@ test('edit profile text is empty', () => {
 
     expect(wrapper.state().editProfileText).toEqual('');
 });
-
-// test('user data', () => {
-//     wrapper = shallow(<ProfileScreen/>);
-//     console.log("modal visible " + wrapper.state().editProfileText);
-//
-//     expect(wrapper.state().editProfileText).toEqual('');
-// });
-
 
 
 test('edit profile button is clickable', () => {
@@ -64,3 +48,75 @@ test('edit profile button is clickable', () => {
     });
     //if no error button is clickable
 });
+
+
+
+test('wall button click', () => {
+    const div = document.createElement('div');
+    document.body.appendChild(div);
+
+    act(() => {
+        ReactDOM.render(<ProfileScreen/>, div);
+    });
+
+    const button = document.querySelector("[data-testid=test-wall]");
+
+    act(() => {
+        button.dispatchEvent(new MouseEvent("click"))
+    });
+    //if no error button is clickable
+});
+
+test('message button click', () => {
+    const div = document.createElement('div');
+    document.body.appendChild(div);
+
+    act(() => {
+        ReactDOM.render(<ProfileScreen/>, div);
+    });
+
+    const button = document.querySelector("[data-testid=test-message]");
+
+    act(() => {
+        button.dispatchEvent(new MouseEvent("click"))
+    });
+    //if no error button is clickable
+});
+
+test('study group button click', () => {
+    const div = document.createElement('div');
+    document.body.appendChild(div);
+
+    act(() => {
+        ReactDOM.render(<ProfileScreen/>, div);
+    });
+
+    const button = document.querySelector("[data-testid=test-study]");
+
+    act(() => {
+        button.dispatchEvent(new MouseEvent("click"))
+    });
+    //if no error button is clickable
+});
+
+// it("can log in with sept/dummy login", () => {
+//     const div = document.createElement('div');
+//     document.body.appendChild(div);
+//
+//     let wrapper = shallow(<ProfileScreen/>);
+//
+//     const mock = new MockAdapter(axios);
+//     const data = {response: true};
+//
+//     mock.onGet('http://localhost:8080/users/sept').reply(200, data);
+//     act(() => {
+//         ReactDOM.render(<ProfileScreen/>, div);
+//     });
+//
+//     console.log(wrapper.state().firstName);
+//
+//     const text = document.querySelector("[data-testid=test-fname]");
+//     console.log(text);
+//     expect(text).toBe('sept');
+//
+// });
