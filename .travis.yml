@@ -32,7 +32,7 @@ matrix:
         - docker build -t gcr.io/rmit-doughnuts/b:$TRAVIS_BUILD_ID ./restful-web-services
         - pwd
         - gcloud config list --all
-        - kubectl set image frontend/frontend master=gcr.io/rmit-dougnuts/b:$TRAVIS_BUILD_ID
+        - kubectl set image backend/backend master=gcr.io/rmit-dougnuts/b:$TRAVIS_BUILD_ID
 
     - language: node_js
       node_js: stable
