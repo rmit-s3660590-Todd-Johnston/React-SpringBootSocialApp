@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  containers:
+    - name: master
+      image: gcr.io/rmit-doughnuts/f:latest
+      ports:
+      - containerPort: 80
