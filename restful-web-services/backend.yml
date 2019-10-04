@@ -6,7 +6,7 @@ metadata:
     app: backend
 spec:
   containers:
-    - name: backend
+    - name: master
       image: gcr.io/rmit-doughnuts/b:latest
       ports:
       - containerPort: 8080

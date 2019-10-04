@@ -6,7 +6,7 @@ metadata:
     app: frontend
 spec:
   containers:
-    - name: frontend
+    - name: master
       image: gcr.io/rmit-doughnuts/f:latest
       ports:
       - containerPort: 80
