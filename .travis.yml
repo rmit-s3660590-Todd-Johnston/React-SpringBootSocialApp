@@ -2,6 +2,10 @@ env:
   global:
     - CI=false
 
+
+services:
+  - docker
+
 language:
   java
 dist: trusty
@@ -15,6 +19,8 @@ before_install:
   - tar -xzf credentials.tar.gz
   - gcloud auth activate-service-account --key-file client-secret.json
   - gcloud config set project rmit-doughnuts
+  - gcloud components install kubectl
+  - gcloud auth configure-docker
   - nvm install node
 install: true
 before_script:
@@ -22,13 +28,10 @@ before_script:
   - npm install
 script:
   - npm run build
-  - ls -al
-  - pwd
-  - gcloud -q app deploy app.yaml
-  - ls -al
-  - pwd
-  - cd ../../restful-web-services
-  - mvn appengine:deploy
+  - cd ../../
+  - docker build -t tomato150/doughnuts/frontend ./frontend/social-app
+  - docker build -t tomato150/doughnuts/restful ./restful-web-services
+  - kubectl create deployment doughnuts --image tomato150/social-app
 
 after_success:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh

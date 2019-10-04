@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Input} from "antd";
 import UserBeanService from "../api/UserBeanService";
+import axios from "axios";
 
 export default class Search extends Component {
     constructor(props) {
@@ -78,7 +79,13 @@ export default class Search extends Component {
         console.log(this.state.users);
         return (
             <div>
-                <Input.Search placeholder="input search text" onSearch={value => console.log(value)} enterButton/>
+                <Input.Search placeholder="input search text" onSearch={value => {
+                    // Get stuff from server based on input
+                    axios.get('/search/').then(res => res.data).then(data => {
+                        // now call the props function to pass back the data we want
+                        this.props.getResults(data);
+                    });
+                }} enterButton/>
             </div>
         )
     }
