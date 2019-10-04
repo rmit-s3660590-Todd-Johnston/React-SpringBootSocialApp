@@ -25,7 +25,6 @@ before_install:
 install: true
 before_script:
   - cd frontend/social-app
-  - npm install
 script:
   - kubectl --version
 
