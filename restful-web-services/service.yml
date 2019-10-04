@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend
+  name: backend-ser
   namespace: todos
 spec:
   externalTrafficPolicy: Cluster
@@ -9,5 +9,5 @@ spec:
   - port: 3001
     targetPort: 3001
   selector:
-    app: master
+    app: backend
   type: LoadBalancer

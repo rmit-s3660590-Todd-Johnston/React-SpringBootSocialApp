@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend
+  name: frontend-ser
   namespace: todos
 spec:
   externalTrafficPolicy: Cluster
@@ -9,5 +9,5 @@ spec:
   - port: 80
     targetPort: 80
   selector:
-    app: master
+    app: frontend
   type: LoadBalancer
