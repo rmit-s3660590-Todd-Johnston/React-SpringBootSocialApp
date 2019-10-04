@@ -132,7 +132,7 @@ export default class ProfileScreen extends Component {
         return <Layout.Content style={{backgroundColor: "#FFFFFF", margin: 13, padding: 13}}>
             <Typography.Title>Profile</Typography.Title>
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh'}}>
-                <Badge id={'bigBadge'} count={<Icon style={{marginBottom: '10px', color: 'gray'}} type={"edit"} onClick={this.showEditProfile}/>} >
+                <Badge  data-testid="edit-button" count={<Icon style={{marginBottom: '10px', color: 'gray'}} type={"edit"} onClick={this.showEditProfile}/>} >
                     <Avatar src={this.state.profilePic}
                             size={128} icon="user"/>
                 </Badge>

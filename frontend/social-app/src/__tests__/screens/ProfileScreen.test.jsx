@@ -46,13 +46,20 @@ test('edit profile text is empty', () => {
 
 
 
-test('edit profile is shown', () => {
+test('edit profile button is clickable', () => {
     let wrapper = shallow(<ProfileScreen/>);
-    const mockCallBack = jest.fn();
-    const badge = shallow((<Badge onClick={mockCallBack}>Ok!</Badge>));
+    const div = document.createElement('div');
+    document.body.appendChild(div);
 
     expect(wrapper.state().modalVisible).toEqual(false);
-    badge.find('Badge').simulate('click');
-    expect(mockCallBack.mock.calls.length).toEqual(1);
-    expect(wrapper.state().modalVisible).toEqual(true);
+
+    act(() => {
+        ReactDOM.render(<ProfileScreen/>, div);
+    });
+
+    const badge = document.querySelector("[data-testid=edit-button]");
+
+    act(() => {
+        badge.dispatchEvent(new MouseEvent("click"))
+    });
 });
