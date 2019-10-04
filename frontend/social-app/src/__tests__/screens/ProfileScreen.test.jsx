@@ -62,4 +62,5 @@ test('edit profile button is clickable', () => {
     act(() => {
         badge.dispatchEvent(new MouseEvent("click"))
     });
+    //if no error button is clickable
 });

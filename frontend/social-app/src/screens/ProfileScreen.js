@@ -38,7 +38,7 @@ export default class ProfileScreen extends Component {
     };
 
 
-//     id: 666
+//     id: 23
 // ​
 //     last_name: "error"
 // ​
@@ -154,7 +154,7 @@ export default class ProfileScreen extends Component {
             </div>
 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <Button style={{marginRight: 60}} size={'large'}
+                <Button data-testid="test-wall" style={{marginRight: 60}} size={'large'}
                         onClick={() => {this.props.history.push('/wall')}}
                 >
                     Go To Wall
