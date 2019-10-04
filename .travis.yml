@@ -29,11 +29,10 @@ matrix:
         - gcloud config set project rmit-doughnuts
         - gcloud components install kubectl
         - gcloud auth configure-docker
-        - docker build -t gcr.io/rmit-doughnuts/b ./restful-web-services
+        - docker build -t gcr.io/rmit-doughnuts/b:$TRAVIS_BUILD_ID ./restful-web-services
         - pwd
         - gcloud config list --all
-        - kubectl apply -f ./restful-web-services/backend.yml
-        - kubectl apply -f ./restful-web-services/service.yml
+        - kubectl set image frontend/frontend master=gcr.io/rmit-dougnuts/b:$TRAVIS_BUILD_ID
 
     - language: node_js
       node_js: stable
