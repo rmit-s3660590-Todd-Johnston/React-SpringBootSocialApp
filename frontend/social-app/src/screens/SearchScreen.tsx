@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Search from "../components/Search";
 import {Avatar, Button, Layout, List, Typography} from "antd";
 
@@ -25,23 +25,13 @@ const mockSearchData = [
     }
 ];
 
-interface Item {
-    name: string;
-    type: string;
-    descr: string;
-}
-
 const SearchScreen: React.FC<SearchScreenProps> = (props: SearchScreenProps) => {
-    const [items, setItems] = useState<Item[]>([]);
-
     return <Layout.Content style={{margin: 13, padding: 13, backgroundColor: "#FFF"}}>
-        <Search
-            getResults={(results: Item) => {setItems((prev: Item[]) => {prev.push(results); return prev;})}}
-        />
+        <Search/>
 
         <Typography.Title>Users</Typography.Title>
         <List
-            dataSource={items.filter(
+            dataSource={mockSearchData.filter(
                 item => item.type === "user"
             )}
             renderItem={(item) => <List.Item
