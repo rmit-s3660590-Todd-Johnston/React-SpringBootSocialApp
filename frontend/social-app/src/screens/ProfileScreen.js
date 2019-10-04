@@ -29,7 +29,7 @@ export default class ProfileScreen extends Component {
             userName: 'Temp Name',
             firstName: 'First',
             lastName: 'Last',
-            profilePic: undefined,
+            profilePic: '',
             isMentor: false,
             subjects: [],
             modalVisible: false,
@@ -38,7 +38,7 @@ export default class ProfileScreen extends Component {
     };
 
 
-//     id: 666
+//     id: 23
 // ​
 //     last_name: "error"
 // ​
@@ -118,9 +118,9 @@ export default class ProfileScreen extends Component {
         });
     };
 
-    handleValueChange = value => {
-        console.log(value.target.value);
-        this.setState({editProfileText: value.target.value})
+    handleValueChange = e => {
+        console.log(e.target.value);
+        this.setState({editProfileText: e.target.value})
     };
 
     componentDidMount() {
@@ -132,7 +132,7 @@ export default class ProfileScreen extends Component {
         return <Layout.Content style={{backgroundColor: "#FFFFFF", margin: 13, padding: 13}}>
             <Typography.Title>Profile</Typography.Title>
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh'}}>
-                <Badge count={<Icon style={{marginBottom: '10px', color: 'gray'}} type={"edit"} onClick={this.showEditProfile}/>} >
+                <Badge  data-testid="edit-button" count={<Icon style={{marginBottom: '10px', color: 'gray'}} type={"edit"} onClick={this.showEditProfile}/>} >
                     <Avatar src={this.state.profilePic}
                             size={128} icon="user"/>
                 </Badge>
@@ -154,17 +154,17 @@ export default class ProfileScreen extends Component {
             </div>
 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <Button style={{marginRight: 60}} size={'large'}
+                <Button data-testid="test-wall" style={{marginRight: 60}} size={'large'}
                         onClick={() => {this.props.history.push('/wall')}}
                 >
                     Go To Wall
                 </Button>
-                <Button style={{marginRight: 60}} type='primary' size={'large'}
+                <Button data-testid="test-message" style={{marginRight: 60}} type='primary' size={'large'}
                         onClick={() => this.props.history.push('/chat')}
                 >
                     Message Me
                 </Button>
-                <Button style={{marginRight: 60}} type='primary' size={'large'}
+                <Button data-testid="test-study" style={{marginRight: 60}} type='primary' size={'large'}
                         onClick={() => this.props.history.push('/study-group')}
                 >
                     Add to study group
@@ -174,7 +174,7 @@ export default class ProfileScreen extends Component {
 
             <Divider style={{color: 'black', font: 'bold', marginTop: '30px'}}>About Me</Divider>
             <Descriptions>
-                <Descriptions.Item label="First Name">{this.state.firstName}</Descriptions.Item>
+                <Descriptions.Item data-testid="test-fname" label="First Name">{this.state.firstName}</Descriptions.Item>
                 <Descriptions.Item label="Last Name">{this.state.lastName}</Descriptions.Item>
                 <Descriptions.Item label="Mentor status">{this.state.isMentor.toString()}</Descriptions.Item>
                 <Descriptions.Item label="User ID: "> {this.state.userID}</Descriptions.Item>
