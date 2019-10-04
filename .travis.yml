@@ -16,6 +16,11 @@ matrix:
         - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       script:
         - mvn test
+      deploy:
+        provider: script
+        script: deploy_server.sh
+        on:
+          branch: travis
     - language: node_js
       node_js: stable
       before_install:
