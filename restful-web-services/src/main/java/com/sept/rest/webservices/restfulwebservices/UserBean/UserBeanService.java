@@ -52,4 +52,9 @@ public class UserBeanService {
 	{
 		return userBeanRepository.findById(id);
 	}
+
+	public UserBean updateProfilePic(Long userId, String profilePic)
+	{
+		return controller.updateProfilePic(userId, profilePic);
+	}
 }
