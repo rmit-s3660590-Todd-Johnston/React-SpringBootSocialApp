@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Button, Form, Icon, Input, Typography} from 'antd'
+import {Button, Form, Icon, Input, Typography, Layout} from 'antd'
 import AuthenticationService from "../AuthenticationService";
+import axios from "axios";
 
 
 const {Text, Title} = Typography;
@@ -40,13 +41,14 @@ class LoginScreen extends Component {
         const usernameError = isFieldTouched('username') && getFieldError('username');
         const passwordError = isFieldTouched('password') && getFieldError('password');
         return (
-            <>
+            <Layout.Content style={{padding: 13}}>
                 <Form layout="vertical" onSubmit={this.handleSubmit}>
                     <Form.Item validateStatus={usernameError ? 'error' : ''} help={usernameError || ''}>
                         {getFieldDecorator('username', {
                             rules: [{required: true, message: 'Please input your username!'}],
                         })(
                             <Input
+                                data-testid="username-input"
                                 prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
                                 placeholder="Username"
                             />,
@@ -57,6 +59,7 @@ class LoginScreen extends Component {
                             rules: [{required: true, message: 'Please input your Password!'}],
                         })(
                             <Input
+                                data-testid="password-input"
                                 prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
                                 type="password"
                                 placeholder="Password"
@@ -72,7 +75,7 @@ class LoginScreen extends Component {
                     </Form.Item>
                 </Form>
                 <a onClick={() => this.props.history.push("/registration")}>First time? Register</a>
-            </>
+            </Layout.Content>
         );
     }
 }
