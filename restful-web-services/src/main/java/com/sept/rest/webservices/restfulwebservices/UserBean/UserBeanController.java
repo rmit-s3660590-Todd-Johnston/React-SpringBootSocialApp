@@ -72,13 +72,13 @@ public class UserBeanController {
     }
 
     //update a profile pic
-    @PutMapping("/users/{id}")
-    public UserBean updateProfilePic(@PathVariable(value = "id")Long userId, String profilePic)
-    {
-       UserBean user = userBeanRepository.findById(userId).get();
-       user.setProfilePic(profilePic);
-       return userBeanRepository.save(user);
-    }
+//    @PutMapping("/users/{id}")
+//    public UserBean updateProfilePic(@PathVariable(value = "id")Long userId, String profilePic)
+//    {
+//       UserBean user = userBeanRepository.findById(userId).get();
+//       user.setProfilePic(profilePic);
+//       return userBeanRepository.save(user);
+//    }
 
     // Delete a user
     @DeleteMapping("/users/{id}")
