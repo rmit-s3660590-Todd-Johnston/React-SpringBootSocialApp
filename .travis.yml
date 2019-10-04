@@ -16,6 +16,7 @@ matrix:
         - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       script:
         - mvn test
+        - cd ..
       deploy:
         provider: script
         script: deploy_server.sh
@@ -30,6 +31,7 @@ matrix:
       script:
         - npm run build
         - npm run test
+        - cd ../..
 
 after_success:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
