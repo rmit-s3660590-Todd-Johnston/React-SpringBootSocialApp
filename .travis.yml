@@ -30,9 +30,10 @@ matrix:
         - gcloud container clusters get-credentials doughnuts --zone=us-central1-a
         - gcloud auth configure-docker
         - docker build -t gcr.io/rmit-doughnuts/b:$TRAVIS_BUILD_ID ./restful-web-services
+        - docker push gcr.io/rmit-doughnuts/b:$TRAVIS_BUILD_ID
         - pwd
         - gcloud config list --all
-        - kubectl set image backend/backend master=gcr.io/rmit-dougnuts/b:$TRAVIS_BUILD_ID
+        - kubectl set image pod/backend master=gcr.io/rmit-dougnuts/b:$TRAVIS_BUILD_ID
 
     - language: node_js
       node_js: stable
