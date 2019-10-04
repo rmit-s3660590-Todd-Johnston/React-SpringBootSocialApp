@@ -6,27 +6,25 @@ env:
 services:
   - docker
 
-language:
-  java
-dist: trusty
-before_install:
-  - gcloud version || true
-  - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
-  - source /home/travis/google-cloud-sdk/path.bash.inc
-  - openssl aes-256-cbc -K $encrypted_a6a92fda07a4_key -iv $encrypted_a6a92fda07a4_iv -in credentials.tar.gz.enc -out credentials.tar.gz -d
-  - gcloud version
-  - gcloud -q components install app-engine-java
-  - tar -xzf credentials.tar.gz
-  - gcloud auth activate-service-account --key-file client-secret.json
-  - gcloud config set project rmit-doughnuts
-  - gcloud components install kubectl
-  - gcloud auth configure-docker
-  - nvm install node
-install: true
-before_script:
-  - cd frontend/social-app
-script:
-  - kubectl --version
+matrix:
+  include:
+    - language: java
+      jdk: oraclejdk11
+      before_install:
+        - cd ./restful-web-services
+      install:
+        - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+      script:
+        - mvn test
+    - language: node_js
+      node_js: stable
+      before_install:
+        - cd ./frontend/social-app
+      install:
+        - npm install
+      script:
+        - npm run build
+        - npm run test
 
 after_success:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
