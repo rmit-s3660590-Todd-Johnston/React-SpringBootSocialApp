@@ -52,7 +52,7 @@ public class UserBeanController {
 
     // Update a user
     @PutMapping("/users/{id}")
-    public UserBean updateUser(@PathVariable(value = "id") Long UserId, @Valid @RequestBody UserBean userDetails) {
+    public UserBean updateUser(@PathVariable(value = "id") Long userId, @Valid @RequestBody UserBean userDetails) {
 
         UserBean user = userBeanRepository.findById(userId).get();
         //it says incompatible types, because it uses Long? but if I put get() Method it works
