@@ -15,7 +15,8 @@ class UserBeanService {
     }
 
     retrieveUserBeanByUserName(user_name){
-        return axios.get(`${API_URL}/users/${user_name}`)
+        console.log(`${API_URL}/users/${user_name}?timestamp=${new Date().toISOString()}`);
+        return axios.get(`${API_URL}/users/${user_name}?timestamp=${new Date().toISOString()}`)
     }
 
     deleteUserBean(id) {

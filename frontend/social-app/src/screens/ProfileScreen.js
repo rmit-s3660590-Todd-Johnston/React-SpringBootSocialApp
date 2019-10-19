@@ -101,7 +101,15 @@ export default class ProfileScreen extends Component {
         UserBeanService.updateUserBean(this.state.userID , newProfilePicture.profilePic)
             .then((res) => {
                 console.log("User: " + res.data.id + " updated!");
-                console.log(res);
+                this.setState({
+                    userID: res.data.id,
+                    userName: res.data.user_name,
+                    firstName: res.data.name,
+                    lastName: res.data.last_name,
+                    profilePic: res.data.profilePic,
+                    isMentor: res.data.mentor,
+                    subjects: res.data.subjects
+                });
             })
             .catch(res => console.log(res));
 
