@@ -29,7 +29,7 @@ class UserBeanService {
 
     updateUserBean(id, profilePic) {
         console.log('executed updateUserBean');
-        return axios.put(`${API_URL}/users/${id}`, profilePic);
+        return axios.put(`${API_URL}/users/${id}`, {profilePic});
     }
 
     createUserBean(id, user_name, name, last_name, password, isMentor) {
