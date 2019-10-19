@@ -15,7 +15,8 @@ class UserBeanService {
     }
 
     retrieveUserBeanByUserName(user_name){
-        return axios.get(`${API_URL}/users/${user_name}`)
+        console.log(`${API_URL}/users/${user_name}?timestamp=${new Date().toISOString()}`);
+        return axios.get(`${API_URL}/users/${user_name}?timestamp=${new Date().toISOString()}`)
     }
 
     deleteUserBean(id) {
@@ -27,9 +28,9 @@ class UserBeanService {
         return axios.put(`${API_URL}/users/${id}`);
     }
 
-    updateUserBean(id) {
+    updateUserBean(id, profilePic) {
         console.log('executed updateUserBean');
-        return axios.put(`${API_URL}/users/${id}`);
+        return axios.put(`${API_URL}/users/${id}`, {profilePic});
     }
 
     createUserBean(id, user_name, name, last_name, password, isMentor) {

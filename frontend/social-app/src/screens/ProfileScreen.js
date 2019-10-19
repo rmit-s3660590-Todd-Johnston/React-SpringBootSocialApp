@@ -95,18 +95,28 @@ export default class ProfileScreen extends Component {
 
     handleOk = e => {
         let newProfilePicture = {
-            profiePic: this.state.editProfileText
+            profilePic: this.state.editProfileText
         };
         console.log(e);
-        UserBeanService.updateUserBean(this.state.userID , newProfilePicture)
+        UserBeanService.updateUserBean(this.state.userID , newProfilePicture.profilePic)
             .then((res) => {
                 console.log("User: " + res.data.id + " updated!");
+                this.setState({
+                    userID: res.data.id,
+                    userName: res.data.user_name,
+                    firstName: res.data.name,
+                    lastName: res.data.last_name,
+                    profilePic: res.data.profilePic,
+                    isMentor: res.data.mentor,
+                    subjects: res.data.subjects
+                });
             })
             .catch(res => console.log(res));
 
         this.setState({
             modalVisible: false,
         });
+        this.getLoggedInUserData();
         this.forceUpdate();
     };
 
@@ -122,7 +132,7 @@ export default class ProfileScreen extends Component {
         this.setState({editProfileText: e.target.value})
     };
 
-    componentWillMount() {
+    componentDidMount() {
         this.getLoggedInUserData();
         this.nullError();
     }

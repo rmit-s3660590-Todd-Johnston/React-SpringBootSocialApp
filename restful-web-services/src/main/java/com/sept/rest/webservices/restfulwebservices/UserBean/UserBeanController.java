@@ -1,15 +1,15 @@
 package com.sept.rest.webservices.restfulwebservices.UserBean;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserBeanController {
     //This annotation is used to wire the bean classes automatically.
     @Autowired
@@ -39,36 +39,31 @@ public class UserBeanController {
 
     // Get a Single user
     @RequestMapping("/users/{id}")
-    public UserBean getUserById(@PathVariable(value = "id") Long UserId){
+    public UserBean getUserById(@PathVariable(value = "id") Long UserId) {
         return userBeanRepository.findById(UserId).get();
         //it says incompatible types, because it uses Long? but if I put get() Method it works
     }
 
     //find by username
     @GetMapping("/users/{user_name}")
-    public UserBean findByUserName(@PathVariable(value = "user_name") String user_name)
-    {
+    public UserBean findByUserName(@PathVariable(value = "user_name") String user_name) {
         return service.findByUsername(user_name);
     }
 
     // Update a user
     @PutMapping("/users/{id}")
-    public UserBean updateUser(@PathVariable(value = "id") Long userId, @Valid @RequestBody UserBean userDetails){
+    public UserBean updateUser(@PathVariable(value = "id") Long UserId, @Valid @RequestBody UserBean userDetails) {
 
         UserBean user = userBeanRepository.findById(userId).get();
         //it says incompatible types, because it uses Long? but if I put get() Method it works
 
-        user.setUser_name(userDetails.getUser_name());
-        user.setName(userDetails.getName());
-        user.setLast_name(userDetails.getLast_name());
-        user.setPassword(userDetails.getPassword());
-        user.setMentor(userDetails.getMentor());
-        user.setSubjects(userDetails.getSubjects());
-        user.setProfilePic(userDetails.getProfilePic());
+        System.out.println("HEY WE HERE");
+        System.out.println(userDetails.getProfilePic());
+        System.out.println(user.getProfilePic());
 
-        UserBean updatedUser = userBeanRepository.save(user);
+        user.setProfilePic(userDetails.getProfilePic() != null ? userDetails.getProfilePic() : user.getProfilePic());
 
-        return updatedUser;
+        return userBeanRepository.saveAndFlush(user);
     }
 
     //update a profile pic
@@ -82,7 +77,7 @@ public class UserBeanController {
 
     // Delete a user
     @DeleteMapping("/users/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable(value = "id") Long userId){
+    public ResponseEntity<?> deleteUser(@PathVariable(value = "id") Long userId) {
         UserBean user = userBeanRepository.findById(userId).get();
         //it says incompatible types, because it uses Long? but if I put get() Method it works
 
