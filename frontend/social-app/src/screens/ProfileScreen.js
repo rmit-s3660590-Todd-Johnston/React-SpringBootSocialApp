@@ -95,12 +95,13 @@ export default class ProfileScreen extends Component {
 
     handleOk = e => {
         let newProfilePicture = {
-            profiePic: this.state.editProfileText
+            profilePic: this.state.editProfileText
         };
         console.log(e);
         UserBeanService.updateUserBean(this.state.userID , newProfilePicture)
             .then((res) => {
                 console.log("User: " + res.data.id + " updated!");
+                console.log(res);
             })
             .catch(res => console.log(res));
 
